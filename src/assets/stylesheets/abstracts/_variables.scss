@@ -1,0 +1,71 @@
+// Named colors
+$color-dark: #2f3542;
+$color-dark-80: rgba(#2f3542, 0.8);
+$color-dark-60: rgba(#2f3542, 0.6);
+
+// Functional colors
+$color-border: #dfe4ea;
+$color-danger: #dc3545;
+
+// Line heights
+$line-height-default: 1;
+
+// Font weights
+$font-weight-normal: 400;
+$font-weight-bold: 600;
+
+// Font sizes
+$font-size-small: 1.2rem;
+$font-size-default: 1.4rem;
+$font-size-large: 1.6rem;
+$font-size-xlarge: 2.2rem;
+
+// Global type settings
+$root-color: $color-dark;
+$root-font-size: 62.5%;
+$root-font-weight: $font-weight-normal;
+$root-line-height: $line-height-default;
+$root-font-family-fallback: Helvetica, Arial, sans-serif;
+$root-font-family-optimized: 'Roboto Optimized', $root-font-family-fallback;
+$root-font-family: 'Roboto', $root-font-family-fallback;
+
+// Body settings
+$body-font-size: $font-size-default;
+$body-background: #f1f2f6;
+
+// Link defaults
+$zb-link-default-color: $color-dark;
+$zb-link-default-hover-color: $color-dark;
+$zb-link-default-decoration: none;
+$zb-link-default-hover-decoration: underline;
+
+// Animation, transitions
+$default-transition-duration: 0.2s;
+$fast-transition-duration: 0.1s;
+
+// Default border-radius
+$border-radius-default: 0.5rem;
+
+// Breakpoints
+// s: mobile devices in portrait
+// m: mobile devices in landscape and phablets
+// l: tablets in portrait
+// xl: desktops and tablets in landscape
+// stylelint-disable length-zero-no-unit
+$mq-breakpoints: (
+  s: 0px,
+  m: 510px,
+  l: 865px,
+  xl: 1190px,
+  xxl: 1440px,
+);
+// stylelint-enable
+
+// Max container sizes
+$mq-container-max-widths: (
+  s: 510px,
+  m: 770px,
+  l: 1100px,
+  xl: 1330px,
+  xxl: 1440px,
+);

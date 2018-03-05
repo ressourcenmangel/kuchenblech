@@ -1,0 +1,47 @@
+/**!
+ * @author ressourcenmangel an der Panke GmbH <adp@ressourcenmangel.de>
+ */
+@charset 'UTF-8';
+
+/**
+ * Abstracts
+ *
+ * Global variables, functions, mixins and placeholders.
+ */
+@import 'abstracts/variables';
+
+/**
+ * Vendors
+ *
+ * CSS files from external libraries and frameworks.
+ */
+@import 'sanitize.css/sanitize';
+@import '@rsm/zauberstab/zauberstab';
+
+/**
+ * Base
+ *
+ * Boilerplate code for the project.
+ */
+@import 'base/fonts';
+@import 'base/shared';
+@import 'base/root';
+@import 'base/body';
+@import 'base/images';
+@import 'base/utils';
+
+/**
+ * Layout
+ *
+ * Stylesheets for the main parts of the site.
+ */
+@import 'layout/header';
+@import 'layout/footer';
+@import 'layout/main';
+@import 'layout/select';
+@import 'layout/breadcrumb';
+@import 'layout/sidebar-nav';
+@import 'layout/headline';
+@import 'layout/text';
+@import 'layout/variant';
+@import 'layout/handle';

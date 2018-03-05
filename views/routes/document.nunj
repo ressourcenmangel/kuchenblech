@@ -1,0 +1,32 @@
+{% if request.params.tenant %}
+  {% if request.params.document %}
+    {% set view = 'tenant-document' %}
+    {% set document = frctl.docs.find('path', request.params.tenant + '/' + request.params.document) %}
+  {% else %}
+    {% set view = 'tenant-index' %}
+    {% set document = frctl.docs.find('path', request.params.tenant) %}
+  {% endif %}
+{% else %}
+  {% if request.params.document %}
+    {% set view = 'document' %}
+    {% set document = frctl.docs.find('path', request.params.document) %}
+  {% else %}
+    {% set view = 'index' %}
+    {% set document = frctl.docs.find('path', '') %}
+  {% endif %}
+{% endif %}
+
+{% set tenants = frctl.docs.collections() %}
+{% if request.params.tenant and tenants.size %}
+  {% set tenant = tenants.findCollection('path', request.params.tenant) %}
+{% else %}
+  {% set tenant = {name: null} %}
+{% endif %}
+
+{% if document and tenant %}
+  {% asyncEach template in ["pages/document.nunj"] %}
+    {% include template  %}
+  {% endeach %}
+{% else %}
+  {% include "pages/404.nunj" %}
+{% endif %}

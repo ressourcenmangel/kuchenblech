@@ -1,0 +1,31 @@
+<ul>
+  {% if entity.preview.name %}
+    {% set previewDefault = true %}
+    {% set previews = ['@' + entity.preview.name] %}
+  {% else %}
+    {% set previews = entity.preview | arrayify | arrayExcludeAndUnique %}
+  {% endif %}
+
+  {% for preview in previews %}
+    {% set previewComponent = frctl.components.find(preview) %}
+    {% if previewComponent %}
+      {% if previewDefault %}
+        {% set previewUrl = path(frctl.theme.urlFromRoute('preview', {component: entity.handle, tenant: tenant.name}), request) %}
+      {% else %}
+        {% set previewUrl = path(frctl.theme.urlFromRoute('preview', {component: entity.handle, preview: previewComponent.handle, tenant: tenant.name}), request) %}
+      {% endif %}
+      <li>{{ previewComponent.label }}: {{ previewUrl }}</li>
+    {% endif %}
+  {% endfor %}
+</ul>
+
+<pre lang="html">
+{{ '&lt;!-- ' + entity.label + ' --&gt;' }}
+{{ entity.render(null, renderEnv, { preview: false, collate: false }) | async(true) | escape }}
+</pre>
+
+{% if entity.hasContext() | async -%}
+  <pre lang="json">
+{{ entity.getResolvedContext() | async(true) | format('json') }}
+  </pre>
+{% endif %}

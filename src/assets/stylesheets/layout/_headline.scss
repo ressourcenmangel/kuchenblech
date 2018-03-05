@@ -1,0 +1,16 @@
+.headline {
+  hyphens: manual;
+  line-height: 1.325;
+}
+
+.headline--1 {
+  font-size: 4rem;
+  font-weight: $font-weight-bold;
+}
+
+.headline--variant {
+  color: $color-dark-80;
+  font-size: 1.4rem;
+  font-weight: $font-weight-bold;
+  text-transform: uppercase;
+}

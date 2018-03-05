@@ -1,0 +1,32 @@
+{
+  "name": "@rsm/kuchenblech",
+  "version": "0.1.0",
+  "description": "A theme for Fractal, a powerful styleguide tool.",
+  "main": "src/index.js",
+  "author": "Dennis Morhardt <dennis.morhardt@ressourcenmangel.de>",
+  "license": "MIT",
+  "peerDependencies": {
+    "@frctl/fractal": ">= 1.1.7 < 2"
+  },
+  "dependencies": {
+    "arrayify": "^1.0.0",
+    "js-object-pretty-print": "^0.3.0",
+    "lodash": "^4.17.5"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0-beta.40",
+    "@babel/preset-env": "^7.0.0-beta.40",
+    "@rsm/zauberstab": "^0.1.0",
+    "babel-loader": "next",
+    "css-loader": "^0.28.10",
+    "extract-text-webpack-plugin": "next",
+    "file-loader": "^1.1.11",
+    "node-sass": "^4.7.2",
+    "postcss-loader": "^2.1.1",
+    "resolve-url-loader": "^2.3.0",
+    "sanitize.css": "^5.0.0",
+    "sass-loader": "^6.0.7",
+    "webpack": "^4.1.0",
+    "webpack-cli": "^2.0.10"
+  }
+}

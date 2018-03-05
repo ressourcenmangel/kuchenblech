@@ -1,0 +1,11 @@
+/**
+ * 1. Offset `alt` text from surrounding copy.
+ * 2. Keep images from scaling beyond the width of their parents.
+ * 3. Prevent images from being stretched when width or height attributes are
+ *    present.
+ */
+img {
+  font-style: italic; // 1
+  height: auto; // 3
+  max-width: 100%; // 2
+}

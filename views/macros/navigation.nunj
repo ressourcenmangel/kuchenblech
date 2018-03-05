@@ -1,0 +1,57 @@
+{% macro leave(component, item, tenants, tenant, request) %}
+  {% set isCurrent = true if (component and (component.id == item.id)) else false %}
+  <li class="sidebar-nav__list-item{% if isCurrent %} sidebar-nav__list-item--current{% endif %}">
+    {% if item.isDoc and item.isIndex %}
+      {% if item.parent.path %}
+        {% set url = path(frctl.theme.urlFromRoute('tenant', { tenant: item.parent.path }), request) %}
+      {% else %}
+        {% set url = path(frctl.theme.urlFromRoute('index'), request) %}
+      {% endif %}
+    {% elif item.isDoc %}
+      {% if item.parent.path %}
+        {% set url = path(frctl.theme.urlFromRoute('document', {document: item.path.substring(item.parent.path.length + 1), tenant: item.parent.path}), request) %}
+      {% else %}
+        {% set url = path(frctl.theme.urlFromRoute('document', {document: item.path}), request) %}
+      {% endif %}
+    {% else %}
+      {% set url = path(frctl.theme.urlFromRoute('component', {component: item.handle, tenant: tenant.name}), request) %}
+    {% endif %}
+
+    <a class="sidebar-nav__link" href="{{ url }}">
+      <span>{{ item.label }}</span>
+      {% if item.status %}
+        {{ status.unlabelled(item.status) }}
+      {% endif %}
+    </a>
+  </li>
+{% endmacro %}
+
+{% macro subleaves(items, component, depth, tenants, tenant, request) %}
+  <li class="sidebar-nav__list-item">
+    <span class="sidebar-nav__link sidebar-nav__link--header">{{ item.label }}</span>
+    <ul class="sidebar-nav__list">
+      {% if item.isComponent and not item.isCollated %}
+        {% set items = item.variants().filter('isHidden', false).items() %}
+      {% else %}
+        {% set items = item.filter('isHidden', false).items() %}
+      {% endif %}
+      {{ leaves(items, component, (depth + 1), tenants, tenant, request) }}
+    </ul>
+  </li>
+{% endmacro %}
+
+{% macro leaves(items, component, depth, tenants, tenant, request) %}
+  {% for item in items %}
+    {% if item.isCollection %}
+      {{ subleaves(items, component, depth, tenants, tenant, request) }}
+    {% elif item.isComponent and not item.isCollated and item.variants().filter('isHidden', false).size > 1 %}
+      {% if not tenants.size or tenantHelper.includes(item, tenant.name) %}
+        {{ subleaves(items, component, depth, tenants, tenant, request) }}
+      {% endif %}
+    {% elif item.isDoc %}
+      {{ leave(component, item, tenants, tenant, request) }}
+    {% elif not tenants.size or tenantHelper.includes(item, tenant.name) %}
+      {{ leave(component, item, tenants, tenant, request) }}
+    {% endif %}
+  {% endfor %}
+{% endmacro %}

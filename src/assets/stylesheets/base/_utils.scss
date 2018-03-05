@@ -1,0 +1,23 @@
+.u-align-center {
+  text-align: center !important;
+}
+
+.u-align-left {
+  text-align: left !important;
+}
+
+.u-align-right {
+  text-align: right !important;
+}
+
+.no-js .u-hide-no-js {
+  display: none;
+}
+
+.u-collapse[aria-expanded='false'] {
+  display: none;
+}
+
+.u-collapse[aria-expanded='true'] {
+  display: block;
+}

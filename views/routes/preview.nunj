@@ -1,0 +1,25 @@
+{% set component = frctl.components.find('@' + request.params.component) -%}
+{% set tenants = frctl.docs.collections() %}
+{% if tenants.size %}
+  {% set tenant = tenants.findCollection('path', request.params.tenant) %}
+{% else %}
+  {% set tenant = {name: null} %}
+{% endif %}
+{% if request.params.preview %}
+  {% if frctl.components.find('@' + request.params.preview) %}
+    {% set preview = '@' + request.params.preview %}
+  {% endif %}
+{% else %}
+  {% set preview = true %}
+{% endif %}
+
+{% if component and tenant and preview %}
+  {% set rendered = component.render(null, renderEnv, { preview: preview, collate: false }) | async(true) %}
+
+  {% if rendered | isError -%}
+    {% set error = rendered %}
+    {% include "_error.nunj" %}
+  {%- else -%}
+    {{ rendered }}
+  {%- endif %}
+{% endif %}

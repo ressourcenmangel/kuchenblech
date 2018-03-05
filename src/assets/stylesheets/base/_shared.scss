@@ -1,0 +1,91 @@
+/**
+ * Declare all block-level element margins in the same direction.
+ * See: http://csswizardry.com/2012/06/single-direction-margin-declarations
+ */
+address,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+blockquote,
+p,
+pre,
+dl,
+ol,
+ul,
+figure,
+hr,
+table,
+fieldset {
+  margin: 0;
+}
+
+/**
+ * Default headline style
+ */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+}
+
+/**
+ * Match type styles of form elements to parents
+ */
+button,
+input,
+optgroup,
+select,
+textarea {
+  border: 0;
+  font-family: inherit;
+  font-size: inherit;
+  letter-spacing: inherit;
+  outline: 0;
+  padding-inline-end: 0;
+  padding-inline-start: 0;
+}
+
+/**
+ * Default link style
+ */
+a,
+button {
+  color: inherit;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/**
+ * Default transition time
+ */
+*,
+*::before,
+*::after {
+  transition-duration: 0.3s;
+  transition-property: none;
+
+  @media (prefers-reduced-motion: reduce) {
+    transition-duration: 0;
+  }
+}
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+b,
+strong {
+  font-weight: $font-weight-bold;
+}
+
+// /**
+//  * Remove invalid styles
+//  */
+:-moz-ui-invalid:not(output) {
+  box-shadow: none;
+}

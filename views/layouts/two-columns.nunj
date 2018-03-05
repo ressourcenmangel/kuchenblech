@@ -1,0 +1,64 @@
+{% extends "layouts/main.nunj" %}
+{% import "macros/navigation.nunj" as navigation %}
+{% import "macros/breadcrumb-item.nunj" as breadcrumb %}
+
+{% block content %}
+  <main class="main">
+    <section class="main__sidebar">
+      {% if tenants.size %}
+        <div class="main__sidebar-item">
+          <form class="form" name="tennants">
+            <div class="form-group">
+              <label class="label u-hidden-visually" for="tennant-select">Select Tennant</label>
+              <select class="select" name="tennant-select" id="tennant-select">
+                {% for tenantItem in tenants.items() %}
+                  <option value="{{ path(frctl.theme.urlFromRoute('tenant', {tenant: tenantItem.name}), request) }}"{% if tenant.name == tenantItem.name %} selected{% endif %}>{{ tenantItem.label }}</option>
+                {% endfor %}
+              </select>
+            </div>
+          </form>
+        </div>
+      {% endif %}
+
+      <div class="main__sidebar-item">
+        <nav class="sidebar-nav">
+          {% set allowedViews = ['component', 'tenant-document', 'tenant-index'] %}
+          {% if allowedViews.includes(view) %}
+            {% set docsCollectionForTenant = frctl.docs.findCollection('path', tenant.name) %}
+            {% if docsCollectionForTenant %}
+              <ul class="sidebar-nav__list sidebar-nav__list--border-bottom">
+                {{ navigation.leaves(docsCollectionForTenant.items(), document, 2, tenants, tenant, request) }}
+              </ul>
+            {% endif %}
+
+            {% if frctl.components.size %}
+              <ul class="sidebar-nav__list">
+                {{ navigation.leaves(frctl.components.filter('isHidden', false).items(), document, 2, tenants, tenant, request) }}
+              </ul>
+            {% endif %}
+          {% else %}
+            <ul class="sidebar-nav__list">
+              {{ navigation.leaves(tenantHelper.withoutCollections(frctl.docs).items(), document, 2, tenants, tenant, request) }}
+            </ul>
+          {% endif %}
+        </nav>
+      </div>
+    </section>
+
+    <section class="main__content">
+      <div class="main__content-item">
+        <nav class="breadcrumb" aria-label="Aktuelle Position">
+          <ol class="breadcrumb__list" itemscope itemtype="http://schema.org/BreadcrumbList">
+            {{ breadcrumb.item('Styleguide', path(frctl.theme.urlFromRoute('index'), request)) }}
+            {% if tenant.name %}
+              {{ breadcrumb.item(tenant.label, path(frctl.theme.urlFromRoute('tenant', {tenant: tenant.name}), request)) }}
+            {% endif %}
+            {% block breadcrumb %}{% endblock %}
+          </ol>
+        </nav>
+      </div>
+
+      {% block main %}{% endblock %}
+    </section>
+  </main>
+{% endblock %}

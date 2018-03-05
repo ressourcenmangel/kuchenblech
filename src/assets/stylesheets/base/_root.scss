@@ -1,0 +1,31 @@
+/**
+ * 1. Set default type styles for the project.
+ * 2. Ensure the page always fills at least the entire height of the viewport.
+ * 3. Force scrollbars to always be visible to prevent awkward 'jumps' when
+ *    navigating between pages.
+ */
+
+html {
+  color: $root-color; // 1
+  font-family: $root-font-family-fallback;
+  font-size: $root-font-size; // 1
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-weight: $root-font-weight; // 1
+  line-height: $root-line-height; // 1
+  min-height: 100%; // 2
+  overflow-x: hidden; // 3
+  overflow-y: scroll; // 3
+}
+
+.has-overlay {
+  overflow: hidden;
+}
+
+.has-optimized-font {
+  font-family: $root-font-family-optimized;
+}
+
+.has-fonts {
+  font-family: $root-font-family;
+}

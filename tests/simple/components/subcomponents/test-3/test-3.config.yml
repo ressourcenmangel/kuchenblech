@@ -1,0 +1,31 @@
+label: Test 3
+default: variant-1
+collated: false
+notes: >
+  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+preview:
+  - '@preview'
+  - '@preview--dark'
+variants:
+  -
+    name: variant-1
+    context:
+      foo: bar
+  -
+    name: variant-2
+    notes: >
+      Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
+    context:
+      foo: bar2
+  -
+    name: variant-3
+    preview:
+      - '!@preview--dark'
+      - '@preview--light'
+    context:
+      foo: bar3
+  -
+    name: variant-4
+    preview: '@preview--light'
+    context:
+      foo: bar4

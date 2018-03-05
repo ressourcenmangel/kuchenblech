@@ -1,0 +1,17 @@
+label: Preview
+variants:
+  -
+    name: default
+    label: Preview
+    context:
+      name: Default Preview
+  -
+    name: dark
+    label: Preview (Dark)
+    context:
+      name: Dark Preview
+  -
+    name: light
+    label: Preview (Light)
+    context:
+      name: Light Preview

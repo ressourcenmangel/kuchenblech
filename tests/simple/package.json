@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "@frctl/fractal": "^1.1.7",
+    "@frctl/nunjucks": "^1.0.3"
+  },
+  "scripts": {
+    "fractal": "fractal start"
+  },
+  "fractal": {
+    "main": "fractal.config.js"
+  }
+}

@@ -1,0 +1,21 @@
+{% extends "layouts/two-columns.nunj" %}
+
+{% block breadcrumb %}
+  {% if not document.isIndex %}
+    {% if document.parent.path %}
+      {% set url = path(frctl.theme.urlFromRoute('document', {document: document.path.substring(document.parent.path.length + 1), tenant: document.parent.path}), request) %}
+    {% else %}
+      {% set url = path(frctl.theme.urlFromRoute('document', {document: document.path}), request) %}
+    {% endif %}
+    <li><a href="{{ url }}">{{ document.label }}</a></li>
+  {% endif %}
+{% endblock %}
+
+{% block main %}
+  {% set contents = document.render(null, renderEnv) | async(true) %}
+  {% if contents | isError %}
+    {{ errors.renderError('page', contents.message) }}
+  {% else %}
+    {{ contents }}
+  {% endif %}
+{% endblock %}

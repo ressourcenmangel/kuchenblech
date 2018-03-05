@@ -1,0 +1,13 @@
+{% extends "layouts/main.nunj" %}
+
+{% block content %}
+  <h1>{{ ('Not found' if error.status == '404' else error.name) | default('An error has occurred') }}</h1>
+
+  {{ error.message | default('No more information is available.') | markdown }}
+
+  {% if error.stack and error.status != '404' %}
+    <code class="Code Error-stack">
+      <pre>{{ error.stack }}</pre>
+    </code>
+  {% endif %}
+{% endblock %}

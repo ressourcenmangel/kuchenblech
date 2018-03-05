@@ -1,0 +1,21 @@
+{% macro item(label, link) %}
+  <li class="breadcrumb__item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    {% if link %}
+      <a class="breadcrumb__link" itemscope itemtype="http://schema.org/Thing" itemprop="item" href="{{ link }}">{{ label }}</a>
+    {% else %}
+      <span itemscope itemtype="http://schema.org/Thing" itemprop="item">{{ label }}</span>
+    {% endif %}
+  </li>
+{% endmacro %}
+
+{% macro iterator(component) %}
+  {% if component.parent and component.parent.name !== 'components' %}
+    {{ iterator(component.parent) }}
+  {% endif %}
+
+  {% if component.isCollection or (component.isComponent and not component.collated) %}
+    {{ item(component.label) }}
+  {% else %}
+    {{ item(component.label, path(frctl.theme.urlFromRoute('component', {component: component.handle, tenant: tenant.name}), request)) }}
+  {% endif %}
+{% endmacro %}

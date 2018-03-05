@@ -1,0 +1,41 @@
+<!doctype html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>{% block title %}{{ frctl.get('project.title') | default('Component Library') }}{% endblock %}</title>
+
+    {% for stylesheet in frctl.theme.get('styles') %}
+      <link rel="stylesheet" href="{{ path(stylesheet) }}?cachebust={{ frctl.theme.get('version') }}" type="text/css" />
+    {% endfor %}
+  </head>
+
+  <body>
+    <header class="header">
+      <nav class="header__nav">
+        <a class="header__nav-item header__nav-item--home">
+          <div class="header__logo-image"><img src="images/rsm.svg" width="24" height="24" alt="Milchtüte" /></div>
+          <div class="header__logo-text">{{ frctl.get('project.title') | default('Component Library') }}</div>
+        </a>
+
+        <a class="header__nav-item" href="{{ path(frctl.theme.urlFromRoute('index'), request) }}">Dokumentation</a>
+        {% set firstOrCurrentTenant = tenant %}
+        {% if not tenant.name and frctl.docs.collections().size %}
+          {% set firstOrCurrentTenant = frctl.docs.collections().first() %}
+        {% endif %}
+        {% set firstComponent = getFirstComponent(frctl.components, firstOrCurrentTenant.name) %}
+        {% if firstComponent %}
+          <a class="header__nav-item" href="{{ path(frctl.theme.urlFromRoute('component', {component: firstComponent.handle, tenant: firstOrCurrentTenant.name}), request) }}">Components</a>
+        {% endif %}
+      </nav>
+    </header>
+
+    {% block content %}{% endblock %}
+
+    <footer class="footer">
+      <div class="footer__inner">Kuchenblech</div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+.text {
+  font-size: $font-size-large;
+  line-height: 1.5;
+  max-width: 60rem;
+
+  p,
+  ol,
+  ul {
+    margin-bottom: 2.5rem;
+  }
+
+  ul,
+  ol {
+    list-style: none;
+    padding-left: 0.1rem;
+  }
+
+  ul li,
+  ol li {
+    margin-bottom: 1rem;
+    padding-left: 2rem;
+    position: relative;
+  }
+
+  ol li {
+    counter-increment: step-counter;
+  }
+
+  ul + p,
+  ol + p {
+    margin-top: 1.5rem;
+  }
+
+  abbr,
+  acronym {
+    cursor: help;
+  }
+}
+
+.text--large {
+  font-size: $font-size-xlarge;
+}

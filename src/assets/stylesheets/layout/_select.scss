@@ -1,0 +1,72 @@
+// Select settings
+$select-default-height: 4rem;
+
+// Select styles
+.select {
+  @mixin select-svg($color: rgba($color-dark, 0.4)) {
+    background-image: zb-svg-url('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><path fill="' + $color + '" d="M100 170L0 67.0077519 35.9368421 30 100 95.9844961 164.063158 30 200 67.0077519z"/></svg>');
+  }
+
+  @include select-svg();
+
+  appearance: none;
+  background-color: rgba(#fff, 0.3);
+  background-position: calc(100% - 1.6rem - 1px) 50%;
+  background-repeat: no-repeat;
+  background-size: 10px 10px;
+  border: 2px solid rgba($color-dark, 0.2);
+  border-radius: $border-radius-default;
+  cursor: pointer;
+  display: block;
+  font-size: $font-size-default;
+  font-weight: $font-weight-normal;
+  height: $select-default-height;
+  line-height: 2.1rem;
+  max-width: 100%;
+  padding: calc(0.95rem - 2px) 1.6rem;
+  position: relative;
+  text-overflow: ellipsis;
+  transition-duration: $default-transition-duration;
+  transition-property: border-color;
+  width: 100%;
+
+  // Hide select arrow on IE10+
+  &::-ms-expand {
+    display: none;
+  }
+
+  // Focus, Hover
+  &:hover,
+  &:focus {
+    @include select-svg(rgba($color-dark, 0.6));
+    background-color: rgba(#fff, 0.4);
+    border-color: rgba($color-dark, 0.4);
+  }
+
+  &:focus {
+    outline: 0;
+  }
+
+  // Disabled as last to override hover/focus styles
+  &[disabled] {
+    @include select-svg(rgba($color-dark, 0.4));
+    border-color: rgba($color-dark, 0.1);
+    color: rgba($color-dark, 0.4);
+  }
+
+  &[disabled]::placeholder {
+    color: rgba($color-dark, 0.4);
+  }
+
+  // Invalid
+  &[aria-invalid='true'] {
+    @include select-svg($color-danger);
+    background-color: rgba($color-danger, 0.2);
+    border-color: $color-danger;
+  }
+}
+
+.select__hint {
+  color: rgba($color-dark, 0.4);
+  display: none;
+}

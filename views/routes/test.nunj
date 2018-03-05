@@ -1,0 +1,3 @@
+{% asyncAll panel in ["1", "2"] %}
+  {% include 'partials/' + panel + '.nunj' %}
+{% endall %}
