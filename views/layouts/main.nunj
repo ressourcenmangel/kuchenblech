@@ -15,7 +15,7 @@
   <body>
     <header class="header">
       <nav class="header__nav">
-        <a class="header__nav-item header__nav-item--home">
+        <a class="header__nav-item header__nav-item--home" href="{{ path(frctl.theme.urlFromRoute('index'), request) }}">
           <div class="header__logo-text">{{ frctl.get('project.title') | default('Component Library') }}</div>
         </a>
 
