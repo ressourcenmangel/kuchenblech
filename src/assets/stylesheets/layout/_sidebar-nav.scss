@@ -33,12 +33,59 @@
 }
 
 .sidebar-nav__link {
-  @include zb-link();
+  @include zb-link($color-dark, $zb-link-default-decoration, $color-dark);
 
   display: block;
   padding-bottom: 1rem;
+  position: relative;
 }
 
 .sidebar-nav__link--header {
   font-weight: $font-weight-bold;
+}
+
+.sidebar-nav__list .sidebar-nav__list {
+  display: none;
+}
+
+.sidebar-nav__list .sidebar-nav__list[aria-hidden='false'] {
+  display: block;
+}
+
+.sidebar-nav__link[aria-expanded] span {
+  &::before {
+    background-image: url('../images/hook-right.svg');
+    background-position-y: 25%;
+    background-repeat: no-repeat;
+    background-size: 1rem;
+    content: '';
+    display: inline-block;
+    height: 100%;
+    left: -1.25rem;
+    opacity: 0.7;
+    position: absolute;
+    top: 0;
+    transition-duration: $default-transition-duration;
+    transition-property: opacity;
+    width: 1.25rem;
+  }
+
+  &:hover::before,
+  &:focus::before {
+    opacity: 1;
+  }
+}
+
+.sidebar-nav__link[aria-expanded='true'] span {
+  &::before {
+    background-image: url('../images/hook-down.svg');
+    opacity: 1;
+  }
+}
+
+.sidebar-nav__list .sidebar-nav__list .sidebar-nav__link[aria-expanded] span { /* stylelint-disable-line */
+  &::before { /* stylelint-disable-line */
+    background-position-y: 30%;
+    background-size: 0.8rem;
+  }
 }

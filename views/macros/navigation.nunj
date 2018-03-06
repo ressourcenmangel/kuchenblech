@@ -28,8 +28,10 @@
 
 {% macro subleaves(items, component, depth, tenants, tenant, request) %}
   <li class="sidebar-nav__list-item">
-    <span class="sidebar-nav__link sidebar-nav__link--header">{{ item.label }}</span>
-    <ul class="sidebar-nav__list">
+    <button class="sidebar-nav__link sidebar-nav__link--header" type="button" data-collapse="true" id="{{ item.id }}" aria-expanded="false" aria-haspopup="true" aria-controls="{{ item.id }}-sub">
+      <span>{{ item.label }}</span>
+    </button>
+    <ul class="sidebar-nav__list" id="{{ item.id }}-sub" aria-labelledby="{{ item.id }}" aria-hidden="true">
       {% if item.isComponent and not item.isCollated %}
         {% set items = item.variants().filter('isHidden', false).items() %}
       {% else %}
