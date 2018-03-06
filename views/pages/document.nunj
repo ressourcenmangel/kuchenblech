@@ -16,6 +16,10 @@
   {% if contents | isError %}
     {{ errors.renderError('page', contents.message) }}
   {% else %}
-    {{ contents }}
+    <div class="main__content-item">
+      <div class="text">
+        {{ contents }}
+      </div>
+    </div>
   {% endif %}
 {% endblock %}
