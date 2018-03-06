@@ -11,7 +11,7 @@
 }
 
 .header__nav-item {
-  @include zb-link('#fff', '#fff');
+  @include zb-link('#fff', $zb-link-decoration, '#fff');
 
   align-items: center;
   border-right: 1px solid rgba(#fff, 0.2);
