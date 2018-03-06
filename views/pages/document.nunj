@@ -1,4 +1,5 @@
 {% extends "layouts/two-columns.nunj" %}
+{% import "macros/breadcrumb-item.nunj" as breadcrumb %}
 
 {% block breadcrumb %}
   {% if not document.isIndex %}
@@ -7,7 +8,7 @@
     {% else %}
       {% set url = path(frctl.theme.urlFromRoute('document', {document: document.path}), request) %}
     {% endif %}
-    <li><a href="{{ url }}">{{ document.label }}</a></li>
+    {{ breadcrumb.item(document.label, url) }}
   {% endif %}
 {% endblock %}
 
