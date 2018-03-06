@@ -16,7 +16,6 @@
     <header class="header">
       <nav class="header__nav">
         <a class="header__nav-item header__nav-item--home">
-          <div class="header__logo-image"><img src="images/rsm.svg" width="24" height="24" alt="Milchtüte" /></div>
           <div class="header__logo-text">{{ frctl.get('project.title') | default('Component Library') }}</div>
         </a>
 
