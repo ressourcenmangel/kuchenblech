@@ -7,34 +7,49 @@
 {% endblock %}
 
 {% block main %}
-  <h1 class="component__title">{{ component.title }} <code>@{{ component.handle }}</code></h1>
-
-  {% if component.notes %}
-    <div class="component__notes">
-      {{ component.notes | markdown }}
+  <div class="main__content-item">
+    <div class="main__headline">
+      <h2 class="headline headline--1">{{ component.title }}</h2>
+      <div class="handle handle--large">@{{ component.handle }}</div>
     </div>
-  {% endif %}
+
+    {% if component.notes %}
+      <div class="text text--large">
+        {{ component.notes | markdown }}
+      </div>
+    {% endif %}
+  </div>
 
   {% if not component.isCollated or component.isVariant or component.variants().size == 1 %}
     {% asyncAll template in ["preview-code"] %}
-      {% set entity = component %}
-      {% include "partials/" + template + ".nunj" %}
+      <div class="main__content-item">
+        {% set entity = component %}
+        {% include "partials/" + template + ".nunj" %}
+      </div>
     {% endall %}
   {% else %}
     {% for variant in component.variants().items() %}
       {% if not tenants.size or tenantHelper.includes(variant, request.params.tenant) %}
-        <h2 class="component__variant-title">{{ variant.label }} <code>@{{ variant.handle }}</code></h2>
+        <div class="main__content-item">
+          <div class="variant">
+            <div class="variant__headline">
+              <a class="variant__hash-link" href="#{{ variant.handle }}">#</a>
+              <h3 class="headline headline--variant">{{ variant.label }}</h3>
+              <div class="handle">@{{ variant.handle }}</div>
+            </div>
 
-        {% if variant._notes %}
-          <div class="component__variant-notes">
-            {{ variant._notes | markdown }}
+            {% if variant._notes %}
+              <div class="text">
+                {{ variant._notes | markdown }}
+              </div>
+            {% endif %}
+
+            {% asyncAll template in ["preview-code"] %}
+              {% set entity = variant %}
+              {% include "partials/" + template + ".nunj" %}
+            {% endall %}
           </div>
-        {% endif %}
-
-        {% asyncAll template in ["preview-code"] %}
-          {% set entity = variant %}
-          {% include "partials/" + template + ".nunj" %}
-        {% endall %}
+        </div>
       {% endif %}
     {% endfor %}
   {% endif %}

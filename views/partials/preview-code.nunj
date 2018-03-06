@@ -1,31 +1,67 @@
-<ul>
-  {% if entity.preview.name %}
-    {% set previewDefault = true %}
-    {% set previews = ['@' + entity.preview.name] %}
-  {% else %}
-    {% set previews = entity.preview | arrayify | arrayExcludeAndUnique %}
-  {% endif %}
+{% if entity.preview.name %}
+  {% set previewDefault = true %}
+  {% set previewHandles = ['@' + entity.preview.name] %}
+{% else %}
+  {% set previewHandles = entity.preview | arrayify | arrayExcludeAndUnique %}
+{% endif %}
 
-  {% for preview in previews %}
-    {% set previewComponent = frctl.components.find(preview) %}
-    {% if previewComponent %}
-      {% if previewDefault %}
-        {% set previewUrl = path(frctl.theme.urlFromRoute('preview', {component: entity.handle, tenant: tenant.name}), request) %}
-      {% else %}
-        {% set previewUrl = path(frctl.theme.urlFromRoute('preview', {component: entity.handle, preview: previewComponent.handle, tenant: tenant.name}), request) %}
-      {% endif %}
-      <li>{{ previewComponent.label }}: {{ previewUrl }}</li>
+{% set previews = [] %}
+{% for previewHandle in previewHandles %}
+  {% set previewComponent = frctl.components.find(previewHandle) %}
+  {% if previewComponent %}
+    {% if previewDefault %}
+      {% set previewUrl = path(frctl.theme.urlFromRoute('preview', {component: entity.handle, tenant: tenant.name}), request) %}
+    {% else %}
+      {% set previewUrl = path(frctl.theme.urlFromRoute('preview', {component: entity.handle, preview: previewComponent.handle, tenant: tenant.name}), request) %}
     {% endif %}
-  {% endfor %}
-</ul>
+    {% set push = previews.push({url: previewUrl, label: previewComponent.label}) %}
+  {% endif %}
+{% endfor %}
 
-<pre lang="html">
+<div class="variant__box">
+  <div class="variant__tabs">
+    {% for preview in previews %}
+      <button class="variant__tab{% if loop.first %} variant__tab--active{% endif %}" type="button" data-src="{{ preview.url }}" data-target="{{ entity.handle }}-preview">
+        <span class="variant__tab-text">{{ preview.label }}</span>
+        <a class="variant__tab-link" href="{{ preview.url }}">
+          <div class="u-hidden-visually">Vorschau in eignem Tab anzeigen</div>
+        </a>
+      </button>
+    {% endfor %}
+  </div>
+
+  <div class="variant__frame">
+    <div class="variant__iframe-container">
+      <iframe class="variant__iframe" id="{{ entity.handle }}-preview" src="{{ previews[0].url }}" marginwidth="0" marginheight="0" vspace="0" hspace="0" scrolling="yes" frameborder="0"></iframe>
+    </div>
+  </div>
+</div>
+
+<div class="variant__box">
+  <div class="variant__tabs">
+    <button class="variant__tab variant__tab--active" type="button">
+      <span class="variant__tab-text">HTML</span>
+    </button>
+
+    {% if entity.hasContext() | async -%}
+      <button class="variant__tab" type="button">
+        <span class="variant__tab-text">Kontext</span>
+      </button>
+    {% endif %}
+  </div>
+
+  <div class="variant__frame">
+    <pre class="variant__code-pre language-html">
 {{ '&lt;!-- ' + entity.label + ' --&gt;' }}
 {{ entity.render(null, renderEnv, { preview: false, collate: false }) | async(true) | escape }}
-</pre>
+    </pre>
+  </div>
 
-{% if entity.hasContext() | async -%}
-  <pre lang="json">
+  {% if entity.hasContext() | async -%}
+    <div class="variant__frame">
+      <pre class="variant__code-pre language-json">
 {{ entity.getResolvedContext() | async(true) | format('json') }}
-  </pre>
-{% endif %}
+      </pre>
+    </div>
+  {% endif %}
+</div>
