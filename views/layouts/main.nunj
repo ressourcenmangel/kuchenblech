@@ -36,5 +36,9 @@
     <footer class="footer">
       <div class="footer__inner">Kuchenblech</div>
     </footer>
+
+    {% for script in frctl.theme.get('scripts') %}
+      <script src="{{ path(script) }}?cachebust={{ frctl.theme.get('version') }}"></script>
+    {% endfor %}
   </body>
 </html>
