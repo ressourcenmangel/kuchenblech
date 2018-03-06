@@ -30,33 +30,33 @@
     {% endfor %}
   </div>
 
-  <div class="variant__frame">
-    <div class="variant__iframe-container">
-      <iframe class="variant__iframe" id="{{ entity.handle }}-preview" src="{{ previews[0].url }}" marginwidth="0" marginheight="0" vspace="0" hspace="0" scrolling="yes" frameborder="0"></iframe>
+  <div class="variant__preview">
+    <div class="variant__preview-resizer">
+      <iframe class="variant__preview-iframe" id="{{ entity.handle }}-preview" src="{{ previews[0].url }}" marginwidth="0" marginheight="0" vspace="0" hspace="0" scrolling="yes" frameborder="0"></iframe>
     </div>
   </div>
 </div>
 
-<div class="variant__box">
-  <div class="variant__tabs">
-    <button class="variant__tab variant__tab--active" type="button">
-      <span class="variant__tab-text">HTML</span>
-    </button>
+<div class="variant__code js-tabs">
+  <ul class="variant__code-tabs" role="tablist">
+    <li role="presentation">
+      <a class="variant__code-tab" href="#{{ entity.handle }}-code-html" id="{{ entity.handle }}-code-html-tab" role="tab" aria-selected="true">HTML</a>
+    </li>
 
     {% if entity.hasContext() | async -%}
-      <button class="variant__tab" type="button">
-        <span class="variant__tab-text">Kontext</span>
-      </button>
+      <li role="presentation">
+        <a class="variant__code-tab" href="#{{ entity.handle }}-code-context" id="{{ entity.handle }}-code-html-context" role="tab" tabindex="-1">Kontext</a>
+      </li>
     {% endif %}
-  </div>
+  </ul>
 
-  <div class="variant__frame">
+  <section id="{{ entity.handle }}-code-html" class="variant__code-content" aria-labelledby="{{ entity.handle }}-code-html-tab" role="tabpanel">
     <pre class="variant__code-pre"><code class="language-markup">{{ '&lt;!-- ' + entity.label + ' --&gt;\n' }}{{ entity.render(null, renderEnv, { preview: false, collate: false }) | async(true) | escape }}</code></pre>
-  </div>
+  </section>
 
   {% if entity.hasContext() | async -%}
-    <div class="variant__frame">
+    <section id="{{ entity.handle }}-code-context" class="variant__code-content" aria-labelledby="{{ entity.handle }}-code-context-tab" role="tabpanel" tabindex="-1" hidden>
       <pre class="variant__code-pre"><code class="language-javascript">{{ entity.getResolvedContext() | async(true) | format('json') }}</code></pre>
-    </div>
+    </section>
   {% endif %}
 </div>

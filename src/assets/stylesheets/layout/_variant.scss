@@ -84,7 +84,11 @@
   }
 }
 
-.variant__iframe-container {
+.variant__preview {
+  background-color: rgba(#fff, 0.3);
+}
+
+.variant__preview-resizer {
   height: 100%;
   min-height: 20rem;
   overflow-x: auto;
@@ -94,15 +98,8 @@
   width: 100%;
 }
 
-.variant__frame {
-  background-color: rgba(#fff, 0.3);
-}
-
-.variant__iframe {
+.variant__preview-iframe {
   background-color: #fff;
-}
-
-.variant__iframe {
   border: 0;
   bottom: 1.5rem;
   height: calc(100% - 1.5rem);
@@ -111,6 +108,45 @@
   right: 0;
   top: 0;
   width: 100%;
+}
+
+.variant__code {
+  border: 1px solid $color-border;
+
+  .variant__box + & {
+    border-top: 0;
+  }
+}
+
+.variant__code-tabs {
+  @include zb-list-reset();
+
+  display: flex;
+}
+
+.variant__code-tab {
+  align-items: center;
+  border-right: 1px solid #dfe4ea;
+  color: $color-dark-60;
+  display: flex;
+  font-size: $font-size-small;
+  line-height: 1;
+  padding: 1rem 2rem;
+
+  &:hover,
+  &:focus {
+    background-color: rgba(#dfe4ea, 0.5);
+    color: $color-dark;
+  }
+
+  &[aria-selected='true'] {
+    background-color: #dfe4ea;
+    color: $color-dark;
+  }
+}
+
+.variant__code-content:focus {
+  outline: 0;
 }
 
 .variant__code-pre[class*='language-'] {
