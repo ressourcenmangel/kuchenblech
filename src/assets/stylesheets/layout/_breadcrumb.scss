@@ -1,5 +1,5 @@
 @mixin breadcrumb-svg($color: $color-dark-60) {
-  background-image: zb-svg-url('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><path fill="' + $color + '" d="M170 100L67.0077519 200 30 164.063158 95.9844961 100 30 35.9368421 67.0077519 0z"/></svg>');
+  background-image: zb-svg-url('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="' + $color + '" d="M86 50L33.768 0 15 17.968 48.464 50 15 82.032 33.768 100"/></svg>');
 }
 
 .breadcrumb {
@@ -8,29 +8,34 @@
 
 .breadcrumb__list {
   @include zb-list-reset();
+
+  font-size: 0;
 }
 
 .breadcrumb__item {
   @include breadcrumb-svg();
 
-  background-position: calc(100% - 5px) 0.2rem;
+  background-position: right center;
   background-repeat: no-repeat;
-  background-size: 10px 10px;
-  display: inline;
+  background-size: 0.8rem 0.8rem;
+  color: $color-dark-60;
+  display: inline-block;
   font-size: $font-size-small;
-  padding-right: 1.9rem;
+  line-height: 1.2;
+  margin-right: 0.8rem;
+  padding-right: 1.6rem;
 
   &:last-child {
-    padding-right: 0;
     background: none;
+    color: $color-dark;
+    margin-right: 0;
+    padding-right: 0;
   }
 }
 
 .breadcrumb__link {
-  @include zb-link($color-dark-60, $color-dark-80);
-
-  &[aria-current='true'] {
-    @include zb-link($color-dark, $color-dark);
+  &:hover,
+  &:focus {
     text-decoration: underline;
   }
 }
