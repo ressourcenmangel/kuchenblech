@@ -16,6 +16,7 @@
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.40",
     "@babel/preset-env": "^7.0.0-beta.40",
+    "@frctl/fractal": "^1.1.7",
     "@rsm/zauberstab": "^0.1.0",
     "babel-loader": "next",
     "css-loader": "^0.28.10",
