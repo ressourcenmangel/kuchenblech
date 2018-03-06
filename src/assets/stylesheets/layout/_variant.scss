@@ -1,22 +1,18 @@
-.variant {
-  padding-bottom: 3rem;
-}
-
 .variant__headline {
-  align-items: center;
-  display: flex;
   margin-bottom: 1.5rem;
-  margin-left: -1.4rem;
+  position: relative;
 }
 
-.variant__headline {
-  *:not(:last-child) {
-    margin-right: 0.5rem;
-  }
+.variant__text {
+  margin-bottom: 2rem;
 }
 
 .variant__hash-link {
-  @include zb-link($color-dark-80, $color-dark);
+  @include zb-link($color-dark-80, none, $color-dark);
+
+  font-weight: normal;
+  position: absolute;
+  transform: translate(-1.5rem, 0);
 
   &:hover,
   &:focus {
@@ -26,7 +22,6 @@
 
 .variant__box {
   border: 1px solid $color-border;
-  max-width: 100rem;
 }
 
 .variant__box + .variant__box {
@@ -91,18 +86,27 @@
   min-height: 20rem;
   overflow-x: auto;
   overflow-y: hidden;
+  position: relative;
   resize: both;
   width: 100%;
 }
 
-.variant__frame,
+.variant__frame {
+  background-color: rgba(#fff, 0.3);
+}
+
 .variant__iframe {
   background-color: #fff;
 }
 
 .variant__iframe {
   border: 0;
-  height: 100%;
+  bottom: 1.5rem;
+  height: calc(100% - 1.5rem);
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
   width: 100%;
 }
 

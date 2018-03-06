@@ -7,15 +7,16 @@
 {% endblock %}
 
 {% block main %}
-  <div class="main__content-item">
+  <div class="main__content-item main__content-item--border-bottom">
     <div class="main__headline">
-      <h2 class="headline headline--1">{{ component.title }}</h2>
-      <div class="handle handle--large">@{{ component.handle }}</div>
+      <h2 class="headline headline--1">{{ component.title }} <span class="handle handle--large">@{{ component.handle }}</span></h2>
     </div>
 
     {% if component.notes %}
-      <div class="text text--large">
-        {{ component.notes | markdown }}
+      <div class="main__intro">
+        <div class="text text--large">
+          {{ component.notes | markdown }}
+        </div>
       </div>
     {% endif %}
   </div>
@@ -30,17 +31,17 @@
   {% else %}
     {% for variant in component.variants().items() %}
       {% if not tenants.size or tenantHelper.includes(variant, request.params.tenant) %}
-        <div class="main__content-item">
+        <div class="main__content-item{% if not loop.last %} main__content-item--border-bottom{% endif %}">
           <div class="variant">
             <div class="variant__headline">
-              <a class="variant__hash-link" href="#{{ variant.handle }}">#</a>
-              <h3 class="headline headline--variant">{{ variant.label }}</h3>
-              <div class="handle">@{{ variant.handle }}</div>
+              <h3 class="headline headline--variant"><a class="variant__hash-link" href="#{{ variant.handle }}" aria-hidden="true">#</a>{{ variant.label }} <span class="handle">@{{ variant.handle }}</span></h3>
             </div>
 
             {% if variant._notes %}
-              <div class="text">
-                {{ variant._notes | markdown }}
+              <div class="variant__text">
+                <div class="text">
+                  {{ variant._notes | markdown }}
+                </div>
               </div>
             {% endif %}
 

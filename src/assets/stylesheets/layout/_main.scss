@@ -4,32 +4,28 @@
 }
 
 .main__sidebar {
-  padding: 0 3rem 0 2rem;
   border-right: 1px solid $color-border;
-  flex: 1 1 22.5%;
-  min-width: 23rem;
   max-width: 30rem;
+  min-width: 23rem;
+  padding: 0 3rem 0 2rem;
+  width: 100%;
 }
 
 .main__sidebar-item,
 .main__content-item {
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 
 .main__content-item--border-bottom {
   border-bottom: 1px solid $color-border;
+  padding-bottom: 3rem;
 }
 
 .main__content {
   padding: 0 3rem;
-  flex: 1 1 auto;
+  width: 100%;
 }
 
-.main__headline {
-  align-items: center;
-  display: flex;
-
-  & *:not(:last-child) {
-    margin-right: 1rem;
-  }
+.main__intro {
+  margin-top: 1rem;
 }

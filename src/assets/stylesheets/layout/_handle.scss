@@ -1,10 +1,15 @@
 .handle {
   background-color: #fff;
+  display: inline-block;
   font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Mono', 'Droid Sans Mono', 'Source Code Pro', monospace;
   font-size: 1.3rem;
+  font-weight: normal;
   line-height: 1;
+  margin-left: 0.5rem;
   padding: 0.5rem 0.75rem;
+  text-transform: none;
   user-select: all;
+  vertical-align: middle;
 }
 
 .handle--large {
