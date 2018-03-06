@@ -1,4 +1,4 @@
 import 'prismjs';
 
 import './shared/collapse';
-import './shared/variant';
+import './components/variant';

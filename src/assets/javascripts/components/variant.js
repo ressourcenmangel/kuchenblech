@@ -4,7 +4,7 @@
 import getTarget from '../utils/get-target';
 
 document.addEventListener('click', (event) => {
-  const $button = getTarget(event.target, '.variant__tab[data-src]');
+  const $button = getTarget(event.target, '.variant__tab-button[data-src]');
 
   if ($button) {
     const target = $button.getAttribute('data-target');
@@ -12,11 +12,11 @@ document.addEventListener('click', (event) => {
 
     document.getElementById(target).src = src;
 
-    const $buttonParent = $button.parentNode;
-    $buttonParent.querySelectorAll('.variant__tab').forEach(($tab) => {
+    const $tabsParent = $button.parentNode.parentNode;
+    $tabsParent.querySelectorAll('.variant__tab').forEach(($tab) => {
       $tab.classList.remove('variant__tab--active');
     });
 
-    $button.classList.add('variant__tab--active');
+    $button.parentNode.classList.add('variant__tab--active');
   }
 });

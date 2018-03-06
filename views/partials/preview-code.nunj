@@ -21,12 +21,12 @@
 <div class="variant__box">
   <div class="variant__tabs">
     {% for preview in previews %}
-      <button class="variant__tab{% if loop.first %} variant__tab--active{% endif %}" type="button" data-src="{{ preview.url }}" data-target="{{ entity.handle }}-preview">
-        <span class="variant__tab-text">{{ preview.label }}</span>
+      <div class="variant__tab{% if loop.first %} variant__tab--active{% endif %}">
+        <button class="variant__tab-button" type="button" data-src="{{ preview.url }}" data-target="{{ entity.handle }}-preview">{{ preview.label }}</button>
         <a class="variant__tab-link" href="{{ preview.url }}">
           <div class="u-hidden-visually">Vorschau in eignem Tab anzeigen</div>
         </a>
-      </button>
+      </div>
     {% endfor %}
   </div>
 

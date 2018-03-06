@@ -37,20 +37,8 @@
 .variant__tab {
   align-items: center;
   border-right: 1px solid #dfe4ea;
-  color: $color-dark-60;
   display: flex;
-  font-size: $font-size-small;
-  line-height: 1;
-  padding: 0 1rem;
-
-  *:not(:last-child) {
-    margin-right: 0.7rem;
-  }
-
-  &:hover,
-  &:focus {
-    color: $color-dark;
-  }
+  padding: 0;
 }
 
 .variant__tab--active {
@@ -58,8 +46,22 @@
   color: $color-dark;
 }
 
-.variant__tab-text {
+.variant__tab-button {
+  color: $color-dark-60;
+  font-size: $font-size-small;
+  height: 100%;
+  line-height: 1;
+  padding: 0 1rem;
   text-transform: uppercase;
+
+  &:hover,
+  &:focus {
+    color: $color-dark;
+  }
+
+  .variant__tab--active & {
+    color: $color-dark;
+  }
 }
 
 .variant__tab-link {
@@ -73,11 +75,12 @@
   background-repeat: no-repeat;
   background-size: 15px 15px;
   height: 15px;
+  margin-right: 1rem;
   width: 16px;
 
   &:hover,
   &:focus {
-    @include external-svg($color-dark-60);
+    @include external-svg($zb-link-accented-color);
   }
 }
 
