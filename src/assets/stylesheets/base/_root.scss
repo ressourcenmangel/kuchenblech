@@ -7,7 +7,7 @@
 
 html {
   color: $root-color; // 1
-  font-family: $root-font-family-fallback;
+  font-family: $root-font-family;
   font-size: $root-font-size; // 1
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
@@ -20,12 +20,4 @@ html {
 
 .has-overlay {
   overflow: hidden;
-}
-
-.has-optimized-font {
-  font-family: $root-font-family-optimized;
-}
-
-.has-fonts {
-  font-family: $root-font-family;
 }

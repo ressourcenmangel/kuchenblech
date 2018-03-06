@@ -17,13 +17,13 @@
  */
 @import 'sanitize.css/sanitize';
 @import '@rsm/zauberstab/zauberstab';
+@import 'system-font-css/_system-font';
 
 /**
  * Base
  *
  * Boilerplate code for the project.
  */
-@import 'base/fonts';
 @import 'base/shared';
 @import 'base/root';
 @import 'base/body';

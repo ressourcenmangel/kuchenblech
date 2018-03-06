@@ -25,9 +25,7 @@ $root-color: $color-dark;
 $root-font-size: 62.5%;
 $root-font-weight: $font-weight-normal;
 $root-line-height: $line-height-default;
-$root-font-family-fallback: Helvetica, Arial, sans-serif;
-$root-font-family-optimized: 'Roboto Optimized', $root-font-family-fallback;
-$root-font-family: 'Roboto', $root-font-family-fallback;
+$root-font-family: system-ui;
 
 // Body settings
 $body-font-size: $font-size-default;
