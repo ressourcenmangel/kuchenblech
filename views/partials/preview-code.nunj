@@ -51,17 +51,12 @@
   </div>
 
   <div class="variant__frame">
-    <pre class="variant__code-pre language-html">
-{{ '&lt;!-- ' + entity.label + ' --&gt;' }}
-{{ entity.render(null, renderEnv, { preview: false, collate: false }) | async(true) | escape }}
-    </pre>
+    <pre class="variant__code-pre"><code class="language-markup">{{ '&lt;!-- ' + entity.label + ' --&gt;\n' }}{{ entity.render(null, renderEnv, { preview: false, collate: false }) | async(true) | escape }}</code></pre>
   </div>
 
   {% if entity.hasContext() | async -%}
     <div class="variant__frame">
-      <pre class="variant__code-pre language-json">
-{{ entity.getResolvedContext() | async(true) | format('json') }}
-      </pre>
+      <pre class="variant__code-pre"><code class="language-javascript">{{ entity.getResolvedContext() | async(true) | format('json') }}</code></pre>
     </div>
   {% endif %}
 </div>
