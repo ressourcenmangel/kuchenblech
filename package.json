@@ -3,7 +3,10 @@
   "version": "0.1.0",
   "description": "A theme for Fractal, a powerful styleguide tool.",
   "main": "src/index.js",
-  "author": "Dennis Morhardt <dennis.morhardt@ressourcenmangel.de>",
+  "contributors": [
+    "Dennis Morhardt <dennis.morhardt@ressourcenmangel.de>",
+    "Tom van Gemert <tom.vangemert@ressourcenmangel.de>"
+  ],
   "license": "MIT",
   "peerDependencies": {
     "@frctl/fractal": ">= 1.1.7 < 2"
@@ -19,10 +22,13 @@
     "@frctl/fractal": "^1.1.7",
     "@rsm/zauberstab": "^0.1.0",
     "babel-loader": "next",
+    "cross-env": "^5.1.3",
     "css-loader": "^0.28.10",
+    "del-cli": "^1.1.0",
     "extract-text-webpack-plugin": "next",
     "file-loader": "^1.1.11",
     "node-sass": "^4.7.2",
+    "npm-run-all": "^4.1.2",
     "postcss-loader": "^2.1.1",
     "prismjs": "^1.11.0",
     "resolve-url-loader": "^2.3.0",
@@ -33,6 +39,13 @@
     "webpack-cli": "^2.0.10"
   },
   "scripts": {
-    "webpack:watch": "webpack -w"
-  }
+    "prepublish": "run-s -cs webpack",
+    "webpack": "del-cli dist && cross-env NODE_ENV=production webpack",
+    "webpack:watch": "del-cli dist && webpack -w"
+  },
+  "files": [
+    "dist/",
+    "src/",
+    "views/"
+  ]
 }
