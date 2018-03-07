@@ -501,9 +501,9 @@
     js-beautify "^1.6.2"
     lodash "^4.12.0"
 
-"@rsm/zauberstab@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@rsm/zauberstab/-/zauberstab-0.1.0.tgz#541fc12abc041005b01133861ae219e30489fa1c"
+"@rsm/zauberstab@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@rsm/zauberstab/-/zauberstab-0.2.0.tgz#3e46a2f5df467e0c7df780ac658c56ad9edd191d"
   dependencies:
     sass-mq "^4.0.2"
 

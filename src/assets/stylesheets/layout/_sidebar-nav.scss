@@ -33,7 +33,7 @@
 }
 
 .sidebar-nav__link {
-  @include zb-link($color-dark, $zb-link-default-decoration, $color-dark);
+  @include zb-link($color-dark, $color-dark);
 
   display: block;
   padding-bottom: 1rem;

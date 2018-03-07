@@ -83,7 +83,7 @@
   }
 
   a {
-    @include zb-link($zb-link-accented-color, underline, $zb-link-accented-hover-color);
+    @include zb-link($zb-link-accented-color, $zb-link-accented-hover-color);
   }
 
   h1 {

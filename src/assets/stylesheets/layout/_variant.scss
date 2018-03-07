@@ -8,7 +8,7 @@
 }
 
 .variant__hash-link {
-  @include zb-link($color-dark-80, none, $color-dark);
+  @include zb-link($color-dark-80, $color-dark);
 
   font-weight: normal;
   position: absolute;
