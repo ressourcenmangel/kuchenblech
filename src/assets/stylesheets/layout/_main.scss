@@ -6,10 +6,8 @@
 
 .main__sidebar {
   border-right: 1px solid $color-border;
-  max-width: 30rem;
-  min-width: 23rem;
   padding: 0 3rem 0 2rem;
-  width: 100%;
+  width: 30rem;
 }
 
 .main__sidebar-item,
@@ -24,7 +22,7 @@
 
 .main__content {
   padding: 0 3rem;
-  width: 100%;
+  width: calc(100% - 30rem);
 }
 
 .main__intro {
