@@ -34,7 +34,7 @@
         <div class="main__content-item{% if not loop.last %} main__content-item--border-bottom{% endif %}">
           <div class="variant">
             <div class="variant__headline">
-              <h3 class="headline headline--variant"><a class="variant__hash-link" href="#{{ variant.handle }}" aria-hidden="true">#</a>{{ variant.label }} <span class="handle">@{{ variant.handle }}</span></h3>
+              <h3 class="headline headline--variant"><a class="variant__hash-link" href="#{{ variant.handle }}" aria-hidden="true">#</a>{{ variant.label }} <span class="handle">{% if variant.isDefault %}@{{ component.handle }}{% else %}@{{ variant.handle }}{% endif %}</span></h3>
             </div>
 
             {% if variant._notes %}
