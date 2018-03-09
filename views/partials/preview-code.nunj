@@ -31,7 +31,7 @@
   </div>
 
   <div class="variant__preview">
-    <div class="variant__preview-resizer">
+    <div class="variant__preview-resizer"{% if entity.display %} style="{% for property, value in entity.display %}{{ property }}: {{ value }} !important; {% endfor %}"{% endif %}>
       <iframe class="variant__preview-iframe" id="{{ entity.handle }}-preview" src="{{ previews[0].url }}" marginwidth="0" marginheight="0" vspace="0" hspace="0" scrolling="yes" frameborder="0"></iframe>
     </div>
   </div>
