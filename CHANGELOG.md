@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.2.1
+
+* Update all assets
+* Update all dependencies
+
 ## 0.2.0
 
 * Adjust resize handle
