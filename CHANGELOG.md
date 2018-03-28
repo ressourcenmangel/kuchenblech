@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.0
+
+* Add missing polyfills for IE
+* Show first level of navigation by default or when a child is active
+* Add support for status display
+
 ## 0.2.1
 
 * Update all assets
