@@ -1,6 +1,7 @@
 {% extends "layouts/two-columns.nunj" %}
 {% import "macros/navigation.nunj" as navigation %}
 {% import "macros/breadcrumb-item.nunj" as breadcrumb %}
+{% import "macros/status.nunj" as status %}
 
 {% block breadcrumb %}
   {{ breadcrumb.iterator(component) }}
@@ -11,6 +12,12 @@
     <div class="main__headline">
       <h2 class="headline headline--1">{{ component.title }} <span class="handle handle--large">@{{ component.handle }}</span></h2>
     </div>
+
+    {% if component.status %}
+      <div class="main__status">
+        {{ status.labelled(component.status) }}
+      </div>
+    {% endif %}
 
     {% if component.notes %}
       <div class="main__intro">
@@ -34,7 +41,7 @@
         <div class="main__content-item{% if not loop.last %} main__content-item--border-bottom{% endif %}">
           <div class="variant">
             <div class="variant__headline">
-              <h3 class="headline headline--variant"><a class="variant__hash-link" href="#{{ variant.handle }}" aria-hidden="true">#</a>{{ variant.label }} <span class="handle">{% if variant.isDefault and variant.name == 'default' %}@{{ component.handle }}{% else %}@{{ variant.handle }}{% endif %}</span></h3>
+              <h3 class="headline headline--variant"><a class="variant__hash-link" href="#{{ variant.handle }}" aria-hidden="true">#</a>{{ status.unlabelled(variant.status) }}{{ variant.label }} <span class="handle">{% if variant.isDefault and variant.name == 'default' %}@{{ component.handle }}{% else %}@{{ variant.handle }}{% endif %}</span></h3>
             </div>
 
             {% if variant._notes %}
