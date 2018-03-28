@@ -29,16 +29,23 @@
 {% endmacro %}
 
 {% macro subleaves(items, component, depth, tenants, tenant, request) %}
+  {% set hasActiveChild = false %}
+  {% if item.isComponent and not item.isCollated %}
+    {% set items = item.variants().filter('isHidden', false).items() %}
+  {% else %}
+    {% set items = item.filter('isHidden', false).items() %}
+  {% endif %}
+  {% for item in items %}
+    {% if component and component.id == item.id %}
+      {% set hasActiveChild = true %}
+    {% endif %}
+  {% endfor %}
+
   <li class="sidebar-nav__list-item">
-    <button class="sidebar-nav__link sidebar-nav__link--header" type="button" data-collapse="true" id="{{ item.id }}" aria-expanded="false" aria-haspopup="true" aria-controls="{{ item.id }}-sub">
+    <button class="sidebar-nav__link{% if depth == 1 %} sidebar-nav__link--header{% endif %}" type="button" data-collapse="true" id="{{ item.id }}" aria-expanded="{% if depth == 1 or hasActiveChild %}true{% else %}false{% endif %}" aria-haspopup="true" aria-controls="{{ item.id }}-sub">
       <span class="sidebar-nav__link-text">{{ item.label }}</span>
     </button>
-    <ul class="sidebar-nav__list" id="{{ item.id }}-sub" aria-labelledby="{{ item.id }}" aria-hidden="true">
-      {% if item.isComponent and not item.isCollated %}
-        {% set items = item.variants().filter('isHidden', false).items() %}
-      {% else %}
-        {% set items = item.filter('isHidden', false).items() %}
-      {% endif %}
+    <ul class="sidebar-nav__list" id="{{ item.id }}-sub" aria-labelledby="{{ item.id }}" aria-hidden="{% if depth == 1 or hasActiveChild %}false{% else %}true{% endif %}">
       {{ leaves(items, component, (depth + 1), tenants, tenant, request) }}
     </ul>
   </li>

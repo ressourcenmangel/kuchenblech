@@ -33,12 +33,12 @@
 
             {% if frctl.components.size %}
               <ul class="sidebar-nav__list">
-                {{ navigation.leaves(frctl.components.filter('isHidden', false).items(), document, 2, tenants, tenant, request) }}
+                {{ navigation.leaves(frctl.components.filter('isHidden', false).items(), component, 1, tenants, tenant, request) }}
               </ul>
             {% endif %}
           {% else %}
             <ul class="sidebar-nav__list">
-              {{ navigation.leaves(tenantHelper.withoutCollections(frctl.docs).items(), document, 2, tenants, tenant, request) }}
+              {{ navigation.leaves(tenantHelper.withoutCollections(frctl.docs).items(), document, 1, tenants, tenant, request) }}
             </ul>
           {% endif %}
         </nav>

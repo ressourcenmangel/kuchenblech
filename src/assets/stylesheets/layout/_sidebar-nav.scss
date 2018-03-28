@@ -47,12 +47,8 @@
   font-weight: $font-weight-bold;
 }
 
-.sidebar-nav__list .sidebar-nav__list {
+.sidebar-nav__list .sidebar-nav__list[aria-hidden='true'] {
   display: none;
-}
-
-.sidebar-nav__list .sidebar-nav__list[aria-hidden='false'] {
-  display: block;
 }
 
 .sidebar-nav__link[aria-expanded] {
