@@ -1,5 +1,6 @@
 {% extends "layouts/two-columns.nunj" %}
 {% import "macros/breadcrumb-item.nunj" as breadcrumb %}
+{% import "macros/error.nunj" as error %}
 
 {% block breadcrumb %}
   {% if not document.isIndex %}
@@ -15,7 +16,7 @@
 {% block main %}
   {% set contents = document.render(null, renderEnv) | async(true) %}
   {% if contents | isError %}
-    {{ errors.renderError('page', contents.message) }}
+    {{ error.renderError('page', contents.message) }}
   {% else %}
     <div class="main__content-item">
       <div class="text">

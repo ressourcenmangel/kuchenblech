@@ -1,0 +1,15 @@
+{% macro renderError(type, message, stack) %}
+  <div class="error">
+    <h4 class="error__title">Error rendering {{ type }}</h4>
+
+    <div class="error__message">
+        {{ message | markdown }}
+    </div>
+
+    {% if stack %}
+      <code class="error__stack">
+          <pre>{{ stack }}</pre>
+      </code>
+    {% endif %}
+  </div>
+{% endmacro %}
