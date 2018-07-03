@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.3.2
+
+* Add table styles
+* Update Readme with the most minimal "Getting started" info
+
 ## 0.3.0
 
 * Add missing polyfills for IE
