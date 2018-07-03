@@ -312,3 +312,12 @@ Unlike a pre-formatted code block, a code span indicates code within a
 normal paragraph. For example:
 
 Use the `printf()` function.
+
+### Tables
+
+Name | Pfad
+--- | ---
+[Startseite](#) | `src/templates/index.pug`
+[Testseite Standard](#) | `src/templates/test.pug`
+[Standard-Detail](#) | `src/templates/detail.pug`
+[This template has a long name](#) | `src/templates/long.pug` 

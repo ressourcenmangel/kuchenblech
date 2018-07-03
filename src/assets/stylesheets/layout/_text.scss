@@ -15,7 +15,8 @@
   ol,
   ul,
   blockquote,
-  pre {
+  pre,
+  table {
     margin-bottom: 1rem;
     max-width: 60rem;
   }
@@ -84,6 +85,21 @@
 
   a {
     @include zb-link($zb-link-accented-color, $zb-link-accented-hover-color);
+  }
+
+  table {
+    border-collapse: collapse;
+    max-width: 80rem;
+    text-align: left;
+    width: 100%;
+
+    td {
+      vertical-align: top;
+    }
+
+    td:not(:last-child) {
+      padding-right: 2rem;
+    }
   }
 
   h1 {
