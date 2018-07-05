@@ -11,6 +11,7 @@
             <div class="form-group">
               <label class="label u-hidden-visually" for="tennant-select">Select Tennant</label>
               <select class="select" name="tennant-select" id="tennant-select">
+                <option value="/">Overview</option>
                 {% for tenantItem in tenants.items() %}
                   <option value="{{ path(frctl.theme.urlFromRoute('tenant', {tenant: tenantItem.name}), request) }}"{% if tenant.name == tenantItem.name %} selected{% endif %}>{{ tenantItem.label }}</option>
                 {% endfor %}

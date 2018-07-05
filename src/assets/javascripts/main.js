@@ -10,3 +10,4 @@ import 'prismjs';
 import './shared/collapse';
 import './components/variant';
 import './components/tabs';
+import './components/tennant-select';
