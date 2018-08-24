@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.4
+
+* Fix tennant select JS if missing
+
 ## 0.3.3
 
 * Add simple tennant switcher
