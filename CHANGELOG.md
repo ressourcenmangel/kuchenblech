@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.4.0
+
+* Link component mentions in docs and descriptions
+
 ## 0.3.4
 
 * Fix tennant select JS if missing
