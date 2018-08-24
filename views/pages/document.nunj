@@ -20,7 +20,7 @@
   {% else %}
     <div class="main__content-item">
       <div class="text">
-        {{ contents }}
+        {{ contents | linkRefs }}
       </div>
     </div>
   {% endif %}

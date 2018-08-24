@@ -110,6 +110,18 @@ module.exports = function KuchenblechTheme(options) {
     env.engine.addFilter('debug', input => `<pre>${pretty(input)}</pre>`);
     env.engine.addFilter('arrayify', input => arrayify(input).filter(i => i !== undefined));
     env.engine.addFilter('arrayExcludeAndUnique', arrayExcludeAndUnique);
+    env.engine.addFilter('linkRefs', string => string.replace(
+      /(?:^|[^a-zA-Z0-9_＠!@#$%&*])(?:(?:@|＠)(?!\/))([a-zA-Z0-9/_-]{1,})(?:\b(?!@|＠)|$)/gi,
+      (match) => {
+        try {
+          const handle = match.trim().replace('@', '');
+          const url = theme.urlFromRoute('component', { component: handle });
+          return ` <a href="${url}">@${handle}</a>`;
+        } catch (e) {
+          return match;
+        }
+      },
+    ));
   });
 
   return theme;

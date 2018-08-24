@@ -22,7 +22,7 @@
     {% if component.notes %}
       <div class="main__intro">
         <div class="text text--large">
-          {{ component.notes | markdown }}
+          {{ component.notes | markdown | linkRefs }}
         </div>
       </div>
     {% endif %}
@@ -47,7 +47,7 @@
             {% if variant._notes %}
               <div class="variant__text">
                 <div class="text">
-                  {{ variant._notes | markdown }}
+                  {{ variant._notes | markdown | linkRefs }}
                 </div>
               </div>
             {% endif %}
