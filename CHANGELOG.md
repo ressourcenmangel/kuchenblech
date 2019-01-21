@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+* Add support for default tenant setting
+
 ## 0.4.0
 
 * Link component mentions in docs and descriptions

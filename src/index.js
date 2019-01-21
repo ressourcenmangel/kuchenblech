@@ -81,8 +81,11 @@ module.exports = function KuchenblechTheme(options) {
 
   // Add filters
   theme.on('init', (env) => {
-    // Globals
+    // Set tenantHelper
+    tenantHelper.setDefault(env._globals.components.get('default.tenant') || []);
     env.engine.addGlobal('tenantHelper', tenantHelper);
+
+    // Set getFirstComponent
     env.engine.addGlobal('getFirstComponent', (components, tenant = null) => {
       if (tenant) {
         return components

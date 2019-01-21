@@ -3,17 +3,21 @@ const arrayify = require('arrayify');
 const arrayExcludeAndUnique = require('../helpers/array-exclude-and-unique');
 
 module.exports = class TenantHelper {
+  setDefault(tenants) {
+    this.defaultTenants = arrayify(tenants) || [];
+  }
+
   getTenantsForComponent(component) {
     if (!component.config.variants || component.config.variants.length === 0) {
-      return arrayify(component.config.tenant || []);
+      return arrayify(component.config.tenant || this.defaultTenants);
     }
 
     return component.config.variants
-      .map(variant => arrayify(variant.tenant) || [])
+      .map(variant => arrayify(variant.tenant) || this.defaultTenants)
       .map(tenant => (_.isString(tenant) && [tenant]) || tenant)
       .reduce(
         (tenants, allTenants) => [...allTenants, ...tenants],
-        arrayify(component.config.tenant || [])
+        arrayify(component.config.tenant || this.defaultTenants)
       )
       .filter(tenant => _.isString(tenant) && !tenant.startsWith('!'))
       .filter((tenant, index, self) => self.indexOf(tenant) === index);
@@ -21,7 +25,7 @@ module.exports = class TenantHelper {
 
   getTenantsForVariant(variant) {
     return arrayExcludeAndUnique([
-      ...arrayify(variant.parent.config.tenant || []),
+      ...arrayify(variant.parent.config.tenant || this.defaultTenants),
       ...arrayify(variant.parent.config.variants.find(v => v.name === variant.name).tenant || []),
     ]);
   }
