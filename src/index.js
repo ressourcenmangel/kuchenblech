@@ -4,7 +4,7 @@ const _ = require('lodash');
 const pretty = require('js-object-pretty-print').pretty;
 const arrayify = require('arrayify');
 const arrayExcludeAndUnique = require('./helpers/array-exclude-and-unique');
-const resolvers = require('./resolvers');
+const getResolvers = require('./resolvers');
 const packageJSON = require('../package.json');
 const TenantHelper = require('./tenants/tenant-helper');
 
@@ -49,6 +49,9 @@ module.exports = function KuchenblechTheme(options) {
 
   // Add static files
   theme.addStatic(path.join(__dirname, '..' , 'dist'), `/${config.static.mount}`);
+
+  // Get resolvers
+  const resolvers = getResolvers(tenantHelper);
 
   // Index route
   theme.addRoute('/', {

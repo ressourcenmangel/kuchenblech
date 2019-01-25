@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+* Fix buliding when using default tenant setting
 * Refactor navigation
 
 ## 0.5.0
