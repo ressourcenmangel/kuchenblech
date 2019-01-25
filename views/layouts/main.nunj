@@ -19,15 +19,9 @@
           <div class="header__logo-text">{{ frctl.get('project.title') | default('Component Library') }}</div>
         </a>
 
-        <a class="header__nav-item" href="{{ path(frctl.theme.urlFromRoute('index'), request) }}">Dokumentation</a>
-        {% set firstOrCurrentTenant = tenant %}
-        {% if not tenant.name and frctl.docs.collections().size %}
-          {% set firstOrCurrentTenant = frctl.docs.collections().first() %}
-        {% endif %}
-        {% set firstComponent = getFirstComponent(frctl.components, firstOrCurrentTenant.name) %}
-        {% if firstComponent %}
-          <a class="header__nav-item" href="{{ path(frctl.theme.urlFromRoute('component', {component: firstComponent.handle, tenant: firstOrCurrentTenant.name}), request) }}">Components</a>
-        {% endif %}
+        {% for navPartial in frctl.theme.get('nav') %}
+          {% include 'partials/menu/' + navPartial + '.nunj' %}
+        {% endfor %}
       </nav>
     </header>
 

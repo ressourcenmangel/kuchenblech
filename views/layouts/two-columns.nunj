@@ -2,16 +2,17 @@
 {% import "macros/navigation.nunj" as navigation %}
 {% import "macros/breadcrumb-item.nunj" as breadcrumb %}
 
+{% set componentsTenatsViews = ['component', 'tenant-document', 'tenant-index'] %}
+
 {% block content %}
   <main class="main">
     <section class="main__sidebar">
-      {% if tenants.size %}
+      {% if componentsTenatsViews.includes(view) and tenants.size %}
         <div class="main__sidebar-item">
           <form class="form" name="tennants">
             <div class="form-group">
               <label class="label u-hidden-visually" for="tennant-select">Select Tennant</label>
               <select class="select" name="tennant-select" id="tennant-select">
-                <option value="/">Overview</option>
                 {% for tenantItem in tenants.items() %}
                   <option value="{{ path(frctl.theme.urlFromRoute('tenant', {tenant: tenantItem.name}), request) }}"{% if tenant.name == tenantItem.name %} selected{% endif %}>{{ tenantItem.label }}</option>
                 {% endfor %}
@@ -23,8 +24,7 @@
 
       <div class="main__sidebar-item">
         <nav class="sidebar-nav">
-          {% set allowedViews = ['component', 'tenant-document', 'tenant-index'] %}
-          {% if allowedViews.includes(view) %}
+          {% if componentsTenatsViews.includes(view) %}
             {% set docsCollectionForTenant = frctl.docs.findCollection('path', tenant.name) %}
             {% if docsCollectionForTenant %}
               <ul class="sidebar-nav__list sidebar-nav__list--border-bottom">

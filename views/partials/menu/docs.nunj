@@ -1,0 +1,1 @@
+<a class="header__nav-item" href="{{ path(frctl.theme.urlFromRoute('index'), request) }}">{{ frctl.docs.label }}</a>

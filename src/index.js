@@ -22,6 +22,7 @@ module.exports = function KuchenblechTheme(options) {
     },
     version: packageJSON.version,
     favicon: null,
+    nav: ['docs', 'components'],
   });
 
   // Stylesheets

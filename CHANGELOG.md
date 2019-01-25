@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+* Refactor navigation
+
 ## 0.5.0
 
 * Add support for default tenant setting
