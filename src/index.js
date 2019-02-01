@@ -7,6 +7,7 @@ const arrayExcludeAndUnique = require('./helpers/array-exclude-and-unique');
 const getResolvers = require('./resolvers');
 const packageJSON = require('../package.json');
 const TenantHelper = require('./tenants/tenant-helper');
+const mixin = require('./mixin');
 
 module.exports = function KuchenblechTheme(options) {
   // Build configuration
@@ -133,3 +134,6 @@ module.exports = function KuchenblechTheme(options) {
 
   return theme;
 };
+
+// Export mixin
+module.exports.tenantMixin = mixin;

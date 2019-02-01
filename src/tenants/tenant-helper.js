@@ -9,24 +9,26 @@ module.exports = class TenantHelper {
 
   getTenantsForComponent(component) {
     if (!component.config.variants || component.config.variants.length === 0) {
-      return arrayify(component.config.tenant || this.defaultTenants);
+      return arrayify(component.config.tenant || component.tenant || this.defaultTenants);
     }
 
     return component.config.variants
-      .map(variant => arrayify(variant.tenant) || this.defaultTenants)
+      .map(variant => arrayify(_.get(variant, 'config.tenant', variant.tenant)))
       .map(tenant => (_.isString(tenant) && [tenant]) || tenant)
       .reduce(
         (tenants, allTenants) => [...allTenants, ...tenants],
-        arrayify(component.config.tenant || this.defaultTenants)
+        arrayify(component.config.tenant || component.tenant || this.defaultTenants)
       )
       .filter(tenant => _.isString(tenant) && !tenant.startsWith('!'))
       .filter((tenant, index, self) => self.indexOf(tenant) === index);
   }
 
   getTenantsForVariant(variant) {
+    const variantObj = variant.parent.config.variants.find(v => v.name === variant.name);
+
     return arrayExcludeAndUnique([
-      ...arrayify(variant.parent.config.tenant || this.defaultTenants),
-      ...arrayify(variant.parent.config.variants.find(v => v.name === variant.name).tenant || []),
+      ...arrayify(variant.parent.config.tenant || variant.parent.tenant || this.defaultTenants),
+      ...arrayify(_.get(variantObj, 'config.tenant', variantObj.tenant)),
     ]);
   }
 

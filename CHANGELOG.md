@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+* Add better support for tenant configuration
+
 ## 0.6.0
 
 * Fix buliding when using default tenant setting
