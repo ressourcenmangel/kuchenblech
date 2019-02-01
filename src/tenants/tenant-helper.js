@@ -49,7 +49,7 @@ module.exports = class TenantHelper {
       return false;
     }
 
-    return tenants.length === 0 || tenants.includes(tenant);
+    return tenants.length === 0 || tenants.includes(tenant) || tenants.includes('*');
   }
 
   withoutCollections(collection) {

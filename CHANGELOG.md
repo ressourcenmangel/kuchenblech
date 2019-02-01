@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+* Add support for wildard in tenant
 * Add better support for tenant configuration
 
 ## 0.6.0
