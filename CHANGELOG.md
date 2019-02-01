@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.7.0
 
 * Add support for wildard in tenant
 * Add better support for tenant configuration
