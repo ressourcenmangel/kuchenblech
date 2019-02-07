@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+* Allow context overwritten by tenant
+
 ## 0.7.0
 
 * Add support for wildard in tenant

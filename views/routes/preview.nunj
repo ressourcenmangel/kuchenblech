@@ -14,7 +14,12 @@
 {% endif %}
 
 {% if component and tenant and preview %}
-  {% set rendered = component.render(null, renderEnv, { preview: preview, collate: false }) | async(true) %}
+  {% set context = component.getResolvedContext() | async(true) %}
+  {% if tenant.name and component.tenantContext[tenant.name] %}
+    {% set context = utils.mergeProp(component.tenantContext[tenant.name], context) %}
+  {% endif %}
+
+  {% set rendered = component.render(context, renderEnv, { preview: preview, collate: false }) | async(true) %}
 
   {% if rendered | isError -%}
     {% set error = rendered %}

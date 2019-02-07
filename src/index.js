@@ -1,5 +1,6 @@
 const path = require('path');
 const Theme = require('@frctl/fractal').WebTheme;
+const utils = require('@frctl/fractal').utils;
 const _ = require('lodash');
 const pretty = require('js-object-pretty-print').pretty;
 const arrayify = require('arrayify');
@@ -86,6 +87,9 @@ module.exports = function KuchenblechTheme(options) {
 
   // Add filters
   theme.on('init', (env) => {
+    // Add utils
+    env.engine.addGlobal('utils', utils);
+
     // Set tenantHelper
     tenantHelper.setDefault(env._globals.components.get('default.tenant') || []);
     env.engine.addGlobal('tenantHelper', tenantHelper);

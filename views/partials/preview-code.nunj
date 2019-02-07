@@ -18,6 +18,13 @@
   {% endif %}
 {% endfor %}
 
+{% if entity.hasContext() | async -%}
+  {% set context = entity.getResolvedContext() | async(true) %}
+{% endif %}
+{% if tenant and entity.tenantContext[tenant.name] %}
+  {% set context = utils.mergeProp(entity.tenantContext[tenant.name], context) %}
+{% endif %}
+
 <div class="variant__box">
   <div class="variant__tabs">
     {% for preview in previews %}
@@ -43,7 +50,7 @@
       <a class="variant__code-tab" href="#{{ entity.handle }}-code-html" id="{{ entity.handle }}-code-html-tab" role="tab" aria-selected="true">HTML</a>
     </li>
 
-    {% if entity.hasContext() | async -%}
+    {% if context -%}
       <li role="presentation">
         <a class="variant__code-tab" href="#{{ entity.handle }}-code-context" id="{{ entity.handle }}-code-html-context" role="tab" tabindex="-1">Kontext</a>
       </li>
@@ -51,12 +58,12 @@
   </ul>
 
   <section id="{{ entity.handle }}-code-html" class="variant__code-content" aria-labelledby="{{ entity.handle }}-code-html-tab" role="tabpanel">
-    <pre class="variant__code-pre"><code class="language-markup">{{ '&lt;!-- ' + entity.label + ' --&gt;\n' }}{{ entity.render(null, renderEnv, { preview: false, collate: false }) | async(true) | escape }}</code></pre>
+    <pre class="variant__code-pre"><code class="language-markup">{{ '&lt;!-- ' + entity.label + ' --&gt;\n' }}{{ entity.render(_.cloneDeep(context), renderEnv, { preview: false, collate: false }) | async(true) | escape }}</code></pre>
   </section>
 
-  {% if entity.hasContext() | async -%}
+  {% if context -%}
     <section id="{{ entity.handle }}-code-context" class="variant__code-content" aria-labelledby="{{ entity.handle }}-code-context-tab" role="tabpanel" tabindex="-1" hidden>
-      <pre class="variant__code-pre"><code class="language-javascript">{{ entity.getResolvedContext() | async(true) | format('json') }}</code></pre>
+      <pre class="variant__code-pre"><code class="language-javascript">{{ context | format('json') }}</code></pre>
     </section>
   {% endif %}
 </div>

@@ -4,6 +4,7 @@ const newDefault = {
   components: {
     default: {
       tenant: [],
+      tenantContext: {},
     },
   },
 };
