@@ -88,6 +88,7 @@ module.exports = function KuchenblechTheme(options) {
   // Add filters
   theme.on('init', (env) => {
     // Add utils
+    env.engine.addGlobal('_', _);
     env.engine.addGlobal('utils', utils);
 
     // Set tenantHelper

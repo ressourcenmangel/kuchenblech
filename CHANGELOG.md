@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+* Fix missing lodash reference in templates
+
 ## 0.8.0
 
 * Allow context overwritten by tenant
