@@ -28,6 +28,8 @@ module.exports = (tenantHelper) => {
       tenants = [null];
     }
 
+    tenantHelper.init(app);
+
     const components = app.components.filter('isHidden', false).flatten();
     components.each((component) => {
       tenants.forEach((tenant) => {
@@ -70,6 +72,8 @@ module.exports = (tenantHelper) => {
     if (tenants.length === 0) {
       tenants = [null];
     }
+
+    tenantHelper.init(app);
 
     const components = app.components.filter('isHidden', false).flatten();
     components.each((component) => {

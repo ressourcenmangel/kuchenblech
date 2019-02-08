@@ -92,7 +92,7 @@ module.exports = function KuchenblechTheme(options) {
     env.engine.addGlobal('utils', utils);
 
     // Set tenantHelper
-    tenantHelper.setDefault(env._globals.components.get('default.tenant') || []);
+    tenantHelper.init(env._globals);
     env.engine.addGlobal('tenantHelper', tenantHelper);
 
     // Set getFirstComponent

@@ -3,53 +3,78 @@ const arrayify = require('arrayify');
 const arrayExcludeAndUnique = require('../helpers/array-exclude-and-unique');
 
 module.exports = class TenantHelper {
-  setDefault(tenants) {
-    this.defaultTenants = arrayify(tenants) || [];
+  init(app) {
+    this.app = app;
+    this.defaultTenants = arrayify(app.components.get('default.tenant'));
+  }
+
+  finalizeTenantList(tenants) {
+    const allTenants = this.app.docs.collections().items().map(tenant => tenant.name);
+
+    const fixedTenants = arrayExcludeAndUnique(tenants.reduce((ts, tenant) => {
+      if (tenant === '*') {
+        allTenants.forEach(t => ts.push(t));
+      } else {
+        ts.push(tenant);
+      }
+
+      return ts;
+    }, []));
+
+    return fixedTenants;
   }
 
   getTenantsForComponent(component) {
+    const componentTenants = this.finalizeTenantList(
+      arrayify(component.config.tenant || component.tenant || this.defaultTenants)
+    );
+
     if (!component.config.variants || component.config.variants.length === 0) {
-      return arrayify(component.config.tenant || component.tenant || this.defaultTenants);
+      return componentTenants;
     }
 
-    return component.config.variants
-      .map(variant => arrayify(_.get(variant, 'config.tenant', variant.tenant)))
-      .map(tenant => (_.isString(tenant) && [tenant]) || tenant)
-      .reduce(
-        (tenants, allTenants) => [...allTenants, ...tenants],
-        arrayify(component.config.tenant || component.tenant || this.defaultTenants)
-      )
-      .filter(tenant => _.isString(tenant) && !tenant.startsWith('!'))
-      .filter((tenant, index, self) => self.indexOf(tenant) === index);
+    const variantTenants = component.config.variants
+      .map(variant => [
+        ...componentTenants,
+        ...arrayify(_.get(variant, 'config.tenant', variant.tenant)),
+      ])
+      .map(tenants => this.finalizeTenantList(tenants))
+      .reduce((tenants, t) => [...tenants, ...t], []);
+
+    return [
+      ...componentTenants,
+      ...variantTenants,
+    ].filter((tenant, index, self) => self.indexOf(tenant) === index);
   }
 
-  getTenantsForVariant(variant) {
-    const variantObj = variant.parent.config.variants.find(v => v.name === variant.name);
+  getTenantsForVariant(variantInput) {
+    const component = variantInput.parent;
+    const componentTenants = this.finalizeTenantList(
+      arrayify(component.config.tenant || component.tenant || this.defaultTenants)
+    );
 
-    return arrayExcludeAndUnique([
-      ...arrayify(variant.parent.config.tenant || variant.parent.tenant || this.defaultTenants),
-      ...arrayify(_.get(variantObj, 'config.tenant', variantObj.tenant)),
+    const variant = component.config.variants.find(v => v.name === variantInput.name);
+    const variantTenants = this.finalizeTenantList([
+      ...componentTenants,
+      ...arrayify(_.get(variant, 'config.tenant', variant.tenant)),
     ]);
+
+    return variantTenants;
   }
 
-  getTenants(componentOrVariant) {
-    if (componentOrVariant.isVariant) {
-      return this.getTenantsForVariant(componentOrVariant);
-    } else if (componentOrVariant.isComponent) {
-      return this.getTenantsForComponent(componentOrVariant);
+  getTenants(entity) {
+    if (entity.isVariant) {
+      return this.getTenantsForVariant(entity);
+    } else if (entity.isComponent) {
+      return this.getTenantsForComponent(entity);
     }
 
-    return false;
+    return [];
   }
 
-  includes(componentOrVariant, tenant) {
-    const tenants = this.getTenants(componentOrVariant);
-
-    if (!tenants) {
-      return false;
-    }
-
-    return tenants.length === 0 || tenants.includes(tenant) || tenants.includes('*');
+  includes(entity, tenant) {
+    const tenants = this.getTenants(entity);
+    return tenants.length === 0 || tenants.includes(tenant);
   }
 
   withoutCollections(collection) {

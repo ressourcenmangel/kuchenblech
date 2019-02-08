@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+* Fix tenant calculation
+
 ## 0.8.1
 
 * Fix missing lodash reference in templates
