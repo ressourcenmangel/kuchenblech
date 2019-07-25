@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "contributors": [
     "Dennis Morhardt <dennis.morhardt@ressourcenmangel.de>",
-    "Tom van Gemert <tom.vangemert@ressourcenmangel.de>"
+    "Tom van Gemert <tom.vangemert@ressourcenmangel.de>",
     "Annika Linke <annika.linke@ressourcenmangel.de>"
   ],
   "license": "MIT",
