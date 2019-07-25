@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.8.3
+
+* Fix missing lang attribute in main.nunj view
+
 ## 0.8.2
 
 * Fix tenant calculation

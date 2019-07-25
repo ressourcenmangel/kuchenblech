@@ -1,11 +1,12 @@
 {
   "name": "@rsm/kuchenblech",
-  "version": "0.8.2",
+  "version": "0.8.3",
   "description": "A theme for Fractal, a powerful styleguide tool.",
   "main": "src/index.js",
   "contributors": [
     "Dennis Morhardt <dennis.morhardt@ressourcenmangel.de>",
     "Tom van Gemert <tom.vangemert@ressourcenmangel.de>"
+    "Annika Linke <annika.linke@ressourcenmangel.de>"
   ],
   "license": "MIT",
   "peerDependencies": {
