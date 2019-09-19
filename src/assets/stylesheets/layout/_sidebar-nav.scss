@@ -89,6 +89,12 @@
   }
 }
 
+.sidebar-nav__link-text--name {
+  font-size: 0.9em;
+  font-style: italic;
+  color: $color-dark-80;
+}
+
 .sidebar-nav__link-status {
   margin-right: 0.5rem;
 }

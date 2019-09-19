@@ -24,6 +24,7 @@
         {{ status.unlabelled(item.status, 'sidebar-nav__link-status') }}
       {% endif %}
       <span class="sidebar-nav__link-text">{{ item.label }}</span>
+      <span class="sidebar-nav__link-text--name"> - @{{ item.name }}</span>
     </a>
   </li>
 {% endmacro %}
@@ -44,6 +45,7 @@
   <li class="sidebar-nav__list-item">
     <button class="sidebar-nav__link{% if depth == 1 %} sidebar-nav__link--header{% endif %}" type="button" data-collapse="true" id="{{ item.id }}" aria-expanded="{% if depth == 1 or hasActiveChild %}true{% else %}false{% endif %}" aria-haspopup="true" aria-controls="{{ item.id }}-sub">
       <span class="sidebar-nav__link-text">{{ item.label }}</span>
+      <span class="sidebar-nav__link-text--name"> - @{{ component.handle }}</span>
     </button>
     <ul class="sidebar-nav__list" id="{{ item.id }}-sub" aria-labelledby="{{ item.id }}" aria-hidden="{% if depth == 1 or hasActiveChild %}false{% else %}true{% endif %}">
       {{ leaves(items, component, (depth + 1), tenants, tenant, request) }}
