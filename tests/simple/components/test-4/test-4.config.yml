@@ -1,4 +1,4 @@
-label: Test 4
+label: B Test 4
 default: variant-1
 collated: false
 notes: >
@@ -18,7 +18,8 @@ variants:
     context:
       foo: bar2
   -
-    name: variant-3
+    name: A-variant-3
+    label: Z-variant-3
     preview:
       - '!@preview--dark'
       - '@preview--light'
