@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.8.4
+
+* Add sort components by label
+
 ## 0.8.3
 
 * Fix missing lang attribute in main.nunj view
