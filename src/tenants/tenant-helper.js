@@ -54,6 +54,12 @@ module.exports = class TenantHelper {
     );
 
     const variant = component.config.variants.find(v => v.name === variantInput.name);
+
+    // Variant not found (mostly an undefined default variant)
+    if (!variant) {
+      return this.finalizeTenantList(componentTenants);
+    }
+
     const variantTenants = this.finalizeTenantList([
       ...componentTenants,
       ...arrayify(_.get(variant, 'config.tenant', variant.tenant)),
