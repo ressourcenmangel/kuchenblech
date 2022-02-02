@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.9.0
+
+* Add missing id for component variants
+* Add additional gitignore rules
+* Add .nvmrc
+* Return compoent tenants if variant is missing
+
 ## 0.8.4
 
 * Add sort components by label
