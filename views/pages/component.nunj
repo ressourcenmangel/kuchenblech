@@ -39,7 +39,7 @@
     {% for variant in component.variants().items() %}
       {% if not tenants.size or tenantHelper.includes(variant, request.params.tenant) %}
         <div class="main__content-item{% if not loop.last %} main__content-item--border-bottom{% endif %}">
-          <div class="variant">
+          <div class="variant" id="{{ variant.handle }}">
             <div class="variant__headline">
               <h3 class="headline headline--variant"><a class="variant__hash-link" href="#{{ variant.handle }}" aria-hidden="true">#</a>{{ status.unlabelled(variant.status) }}{{ variant.label }} <span class="handle">{% if variant.isDefault and variant.name == 'default' %}@{{ component.handle }}{% else %}@{{ variant.handle }}{% endif %}</span></h3>
             </div>
