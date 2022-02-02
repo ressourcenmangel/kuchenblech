@@ -29,3 +29,7 @@ package-lock.json
 
 # Builded assets
 dist
+/.DS_Store
+/tests/.DS_Store
+/tests/simple/.DS_Store
+/.gitignore
