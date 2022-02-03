@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.10.2
+
+* No changes
+
 ## 0.10.1
 
 * Add license to package.json
