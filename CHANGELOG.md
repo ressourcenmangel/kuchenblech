@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.10.1
+
+* Add license to package.json
+
 ## 0.10.0
 
 * Add default component status and examples
