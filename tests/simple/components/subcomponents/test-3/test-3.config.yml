@@ -1,4 +1,4 @@
-label: Test 3
+label: Test 3 (Variants not collated)
 default: variant-1
 collated: false
 notes: >

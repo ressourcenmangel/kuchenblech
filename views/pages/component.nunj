@@ -26,6 +26,22 @@
         </div>
       </div>
     {% endif %}
+
+    {% if component.variants and component.variants().size > 1 %}
+      <div class="main__variants">
+        <h2 class="headline headline--variant-index">Variants</h2>
+        <ul class="main__variants-index">
+          {% for variant in component.variants().items() %}
+            <li>
+              {{ status.unlabelled(variant.status) }}
+              <a class="main__variants-link" href="#{{ variant.handle }}">
+                {{ variant.label }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
   </div>
 
   {% if not component.isCollated or component.isVariant or component.variants().size == 1 %}

@@ -33,3 +33,21 @@
   margin-bottom: 2rem;
   margin-top: 2rem;
 }
+
+.main__variants {
+  margin-top: 2rem;
+}
+
+.main__variants-index {
+  @include zb-list-reset();
+
+  line-height: 1.5;
+  margin-top: 1rem;
+}
+
+.main__variants-link {
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
+}
