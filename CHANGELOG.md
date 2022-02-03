@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.10.0
+
+* Add default component status and examples
+* Add variants index to component view
+* Add deployment information to README
+* Adjust .nvmrc
+
 ## 0.9.0
 
 * Add missing id for component variants
