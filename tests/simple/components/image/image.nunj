@@ -1,0 +1,6 @@
+<div class="image loading" style="padding-top: 75%;">
+  <noscript>
+    <img class="image__fallback" alt="Alternative text" width="1600" height="1200" src="https://via.placeholder.com/1600x1200/F5F5F5/28281a.png?text=1600x1200" />
+  </noscript>
+  <img class="image__img js-lazyload" alt="Alternative text" width="1600" height="1200" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="https://via.placeholder.com/1600x1200/F5F5F5/28281a.png?text=1600x1200" />
+</div>

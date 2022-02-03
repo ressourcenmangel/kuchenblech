@@ -11,7 +11,7 @@ fractal.web.theme(kuchenblech());
 fractal.components.engine('@frctl/nunjucks');
 fractal.components.set('ext', '.nunj');
 fractal.components.set('path', 'components');
-fractal.components.set('default.status', null);
+fractal.components.set('default.status', 'wip');
 fractal.components.set('default.collated', true);
 fractal.components.set('default.preview', '@preview');
 

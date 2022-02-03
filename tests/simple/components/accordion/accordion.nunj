@@ -1,0 +1,32 @@
+<div class="accordion">
+  <details class="accordion__item">
+    <summary class="accordion__toggle"><svg class="icon icon--caret-down accordion__icon" viewBox="0 0 200 200" aria-hidden="true">
+        <use xlink:href="#icon-caret-down"></use>
+      </svg><span class="accordion__title">Erster Abschnitt zum Aufklappen</span></summary>
+    <div class="accordion__content">
+      <div class="text">
+        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est.</p>
+      </div>
+    </div>
+  </details>
+  <details class="accordion__item">
+    <summary class="accordion__toggle"><svg class="icon icon--caret-down accordion__icon" viewBox="0 0 200 200" aria-hidden="true">
+        <use xlink:href="#icon-caret-down"></use>
+      </svg><span class="accordion__title">Zweiter Abschnitt mit längerem Titel zum Aufklappen</span></summary>
+    <div class="accordion__content">
+      <div class="text">
+        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est.</p>
+      </div>
+    </div>
+  </details>
+  <details class="accordion__item">
+    <summary class="accordion__toggle"><svg class="icon icon--caret-down accordion__icon" viewBox="0 0 200 200" aria-hidden="true">
+        <use xlink:href="#icon-caret-down"></use>
+      </svg><span class="accordion__title">Dritter Abschnitt zum Aufklappen</span></summary>
+    <div class="accordion__content">
+      <div class="text">
+        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est.</p>
+      </div>
+    </div>
+  </details>
+</div>

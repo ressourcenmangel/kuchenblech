@@ -1,0 +1,24 @@
+label: Accordion
+status: wip
+display:
+  min-height: 350px
+context:
+  items:
+    -
+      title: Erster Abschnitt zum Aufklappen
+      use: text
+      settings:
+        content: >
+          p Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est.
+    -
+      title: Zweiter Abschnitt mit längerem Titel zum Aufklappen
+      use: text
+      settings:
+        content: >
+          p Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est.
+    -
+      title: Dritter Abschnitt zum Aufklappen
+      use: text
+      settings:
+        content: >
+          p Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est.
