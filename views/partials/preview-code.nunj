@@ -52,18 +52,20 @@
 
     {% if context -%}
       <li role="presentation">
-        <a class="variant__code-tab" href="#{{ entity.handle }}-code-context" id="{{ entity.handle }}-code-html-context" role="tab" tabindex="-1">Kontext</a>
+        <a class="variant__code-tab" href="#{{ entity.handle }}-code-context" id="{{ entity.handle }}-code-html-context" role="tab" tabindex="-1">Context</a>
       </li>
     {% endif %}
   </ul>
 
-  <section id="{{ entity.handle }}-code-html" class="variant__code-content" aria-labelledby="{{ entity.handle }}-code-html-tab" role="tabpanel">
-    <pre class="variant__code-pre"><code class="language-markup">{{ '&lt;!-- ' + entity.label + ' --&gt;\n' }}{{ entity.render(_.cloneDeep(context), renderEnv, { preview: false, collate: false }) | async(true) | escape }}</code></pre>
+  <section id="{{ entity.handle }}-code-html" class="variant__code-content js-variant-code" aria-labelledby="{{ entity.handle }}-code-html-tab" role="tabpanel">
+    <pre class="variant__code-pre"><code class="language-markup">{{ entity.render(_.cloneDeep(context), renderEnv, { preview: false, collate: false }) | async(true) | escape }}</code></pre>
+    <button type="button" class="variant__code-collapse-button" data-text-closed="Full code" data-text-opened="Show less"><span class="variant__code-collapse-button-label">Full code</span></button>
   </section>
 
   {% if context -%}
-    <section id="{{ entity.handle }}-code-context" class="variant__code-content" aria-labelledby="{{ entity.handle }}-code-context-tab" role="tabpanel" tabindex="-1" hidden>
+    <section id="{{ entity.handle }}-code-context" class="variant__code-content js-variant-code" aria-labelledby="{{ entity.handle }}-code-context-tab" role="tabpanel" tabindex="-1" hidden>
       <pre class="variant__code-pre"><code class="language-javascript">{{ context | format('json') }}</code></pre>
+      <button type="button" class="variant__code-collapse-button" data-text-closed="Full context" data-text-opened="Show less"><span class="variant__code-collapse-button-label">Full context</span></button>
     </section>
   {% endif %}
 </div>

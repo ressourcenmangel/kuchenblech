@@ -149,6 +149,92 @@
   outline: 0;
 }
 
+.variant__code-content {
+  position: relative;
+}
+
+.variant__code-collapse-button {
+  align-items: flex-end;
+  background: linear-gradient(180deg, rgba(245,242,240,0) 0%, rgba(245,242,240,1) 60%, rgba(245,242,240,1) 100%);
+  bottom: 0;
+  color: $color-dark-60;
+  display: none;
+  font-size: 12px;
+  font-weight: bold;
+  height: 100px;
+  justify-content: center;
+  left: 0;
+  padding-bottom: 20px;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  text-transform: uppercase;
+  width: 100%;
+
+  &:hover {
+    color: $color-dark-80;
+    text-decoration: underline;
+  }
+}
+
+.variant__code-collapse-button-label {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  background-color: #fff;
+  padding: 5px 5px 5px 10px;
+  border-radius: 5px;
+}
+
+.variant__code-collapse-button-label::after {
+  @mixin caret-svg($color: $color-dark) {
+    background-image: zb-svg-url('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><polygon fill="' + $color + '" points="138.25 71.5833333 100 109.75 61.75 71.5833333 50 83.3333333 100 133.333333 150 83.3333333"/></svg>');
+  }
+
+  @include caret-svg($color-dark-60);
+
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  background-size: 25px 25px;
+  content: '';
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+
+  .variant__code-collapse-button:hover & {
+    @include caret-svg($color-dark-80);
+  }
+}
+
 .variant__code-pre[class*='language-'] {
   margin: 0;
+  max-height: 200px;
+  position: relative;
+}
+
+.variant__code-content.js-variant-code--collapsible {
+  .variant__code-pre[class*='language-'] {
+    overflow: hidden;
+  }
+
+  .variant__code-collapse-button {
+    display: flex;
+  }
+}
+
+.variant__code-content.js-variant-code--expanded {
+  .variant__code-pre[class*='language-'] {
+    overflow: auto;
+    max-height: none;
+    padding-bottom: 70px;
+  }
+
+  .variant__code-collapse-button {
+    height: auto;
+    padding: 20px 0;
+  }
+
+  .variant__code-collapse-button-label::after {
+    transform: rotate(180deg);
+  }
 }
