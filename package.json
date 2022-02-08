@@ -1,6 +1,6 @@
 {
   "name": "@rsm/kuchenblech",
-  "version": "0.10.2",
+  "version": "0.11.0",
   "description": "A theme for Fractal, a powerful styleguide tool.",
   "main": "src/index.js",
   "contributors": [

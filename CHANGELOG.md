@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.11.0 - 2022.02.08
+
+* Add collapseable code and context blocks
+
 ## 0.10.2
 
 * No changes
