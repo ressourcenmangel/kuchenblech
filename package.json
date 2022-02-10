@@ -30,7 +30,7 @@
     "element-closest": "^2.0.2",
     "extract-text-webpack-plugin": "next",
     "file-loader": "^1.1.11",
-    "node-sass": "^4.7.2",
+    "node-sass": "^7.0.0",
     "nodelist-foreach-polyfill": "^1.2.0",
     "npm-run-all": "^4.1.2",
     "postcss-loader": "^2.1.1",
