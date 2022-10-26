@@ -1,19 +1,26 @@
-label: Test 2
-default: variant-1
+label: Tenant Variants test
 status: wip
+tenant:
+  - '!*'
 notes: >
   Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 preview:
   - '@preview'
   - '@preview--dark'
+context:
+  foo: bar
 variants:
   -
-    name: variant-1
+    name: default
+    label: Default (all tenants)
     status: prototype
-    context:
-      foo: bar
+    tenant:
+      - '*'
   -
     name: variant-2
+    label: 'Variant 2 (tenant: Test 1)'
+    tenant:
+      - 'test1'
     status: ready
     notes: >
       Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
@@ -21,6 +28,9 @@ variants:
       foo: bar2
   -
     name: variant-3
+    label: 'Variant 2 (tenant: Test 2)'
+    tenant:
+      - 'test2'
     preview:
       - '!@preview--dark'
       - '@preview--light'
@@ -28,6 +38,9 @@ variants:
       foo: bar3
   -
     name: variant-4
+    label: Variant 4 (all tenants)
     preview: '@preview--light'
+    tenant:
+      - '*'
     context:
       foo: bar4
