@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.11.1 - 2022.10.26
+
+* Fix variant index display only variants belonging to the current tenant
+
 ## 0.11.0 - 2022.02.08
 
 * Add collapseable code and context blocks
