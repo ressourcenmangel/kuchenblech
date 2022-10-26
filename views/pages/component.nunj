@@ -32,12 +32,14 @@
         <h2 class="headline headline--variant-index">Variants</h2>
         <ul class="main__variants-index">
           {% for variant in component.variants().items() %}
-            <li>
-              {{ status.unlabelled(variant.status) }}
-              <a class="main__variants-link" href="#{{ variant.handle }}">
-                {{ variant.label }}
-              </a>
-            </li>
+            {% if not tenants.size or tenantHelper.includes(variant, request.params.tenant) %}
+              <li>
+                {{ status.unlabelled(variant.status) }}
+                <a class="main__variants-link" href="#{{ variant.handle }}">
+                  {{ variant.label }}
+                </a>
+              </li>
+            {% endif %}
           {% endfor %}
         </ul>
       </div>
