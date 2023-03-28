@@ -4,7 +4,7 @@
 {% endif %}
 {% set firstComponent = getFirstComponent(frctl.components, firstOrCurrentTenant.name) %}
 {% if frctl.docs.collections().first() %}
-  <a class="header__nav-item" href="{{ path(frctl.theme.urlFromRoute('tenant', {tenant: firstOrCurrentTenant.name}), request) }}">{{ frctl.components.label }}</a>
+  <a class="header__nav-item header__nav-item--components" href="{{ path(frctl.theme.urlFromRoute('tenant', {tenant: firstOrCurrentTenant.name}), request) }}">{{ frctl.components.label }}</a>
 {% elif firstComponent %}
-  <a class="header__nav-item" href="{{ path(frctl.theme.urlFromRoute('component', {component: firstComponent.handle, tenant: firstOrCurrentTenant.name}), request) }}">{{ frctl.components.label }}</a>
+  <a class="header__nav-item header__nav-item--components" href="{{ path(frctl.theme.urlFromRoute('component', {component: firstComponent.handle, tenant: firstOrCurrentTenant.name}), request) }}">{{ frctl.components.label }}</a>
 {% endif %}
