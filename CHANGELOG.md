@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.12.1 - 2023.03.28
+
+* Add active class to nav-item dynamically
+
 ## 0.12.0 - 2023.03.28
 
 * Add defined classnames to header nav items
