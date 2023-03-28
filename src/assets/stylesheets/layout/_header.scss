@@ -32,6 +32,10 @@
   padding: 0 1.8rem 0 1.4rem;
 }
 
+.header__nav-item--active {
+  text-decoration: underline;
+}
+
 .header__logo-image {
   margin-right: 1rem;
 }

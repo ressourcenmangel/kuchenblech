@@ -8,6 +8,7 @@ import 'prismjs';
 
 // Components
 import './shared/collapse';
+import './shared/header';
 import './components/variant';
 import './components/tabs';
 import './components/tennant-select';
