@@ -1,7 +1,7 @@
-{% extends "layouts/two-columns.nunj" %}
-{% import "macros/navigation.nunj" as navigation %}
-{% import "macros/breadcrumb-item.nunj" as breadcrumb %}
-{% import "macros/status.nunj" as status %}
+{% extends "layouts/two-columns.njk" %}
+{% import "macros/navigation.njk" as navigation %}
+{% import "macros/breadcrumb-item.njk" as breadcrumb %}
+{% import "macros/status.njk" as status %}
 
 {% block breadcrumb %}
   {{ breadcrumb.iterator(component) }}
@@ -50,7 +50,7 @@
     {% asyncAll template in ["preview-code"] %}
       <div class="main__content-item">
         {% set entity = component %}
-        {% include "partials/" + template + ".nunj" %}
+        {% include "partials/" + template + ".njk" %}
       </div>
     {% endall %}
   {% else %}
@@ -72,7 +72,7 @@
 
             {% asyncAll template in ["preview-code"] %}
               {% set entity = variant %}
-              {% include "partials/" + template + ".nunj" %}
+              {% include "partials/" + template + ".njk" %}
             {% endall %}
           </div>
         </div>

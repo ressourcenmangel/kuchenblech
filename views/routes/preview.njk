@@ -23,7 +23,7 @@
 
   {% if rendered | isError -%}
     {% set error = rendered %}
-    {% include "_error.nunj" %}
+    {% include "_error.njk" %}
   {%- else -%}
     {{ rendered }}
   {%- endif %}

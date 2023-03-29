@@ -11,15 +11,15 @@
   {% if not tenants.size or tenantHelper.includes(component, request.params.tenant) %}
     {% if component.variants and component.variants().size > 1 and not component.collated %}
       {% set redirectUrl = frctl.theme.urlFromRoute('component', {tenant: tenant.name, component: component.handle + '--' + component.defaultName}) %}
-      {% include "__system/redirect.nunj" %}
+      {% include "__system/redirect.njk" %}
     {% else %}
       {% set view = 'component' %}
-      {% asyncEach template in ["pages/component.nunj"] %}
+      {% asyncEach template in ["pages/component.njk"] %}
         {% include template  %}
       {% endeach %}
     {% endif %}
   {% else %}
-    {% include "pages/404.nunj" %}
+    {% include "pages/404.njk" %}
   {% endif %}
 {% elif collection %}
   {% set component = collection.first() %}
@@ -28,7 +28,7 @@
   {% else %}
     {% set redirectUrl = frctl.theme.urlFromRoute('component', {tenant: tenant.name, component: component.handle}) %}
   {% endif %}
-  {% include "__system/redirect.nunj" %}
+  {% include "__system/redirect.njk" %}
 {% else %}
-  {% include "pages/404.nunj" %}
+  {% include "pages/404.njk" %}
 {% endif %}

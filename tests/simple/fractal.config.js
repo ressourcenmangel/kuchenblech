@@ -9,7 +9,7 @@ fractal.web.theme(kuchenblech());
 
 // Components
 fractal.components.engine('@frctl/nunjucks');
-fractal.components.set('ext', '.nunj');
+fractal.components.set('ext', '.njk');
 fractal.components.set('path', 'components');
 fractal.components.set('default.status', 'wip');
 fractal.components.set('default.collated', true);

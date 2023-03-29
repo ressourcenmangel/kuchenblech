@@ -24,9 +24,9 @@
 {% endif %}
 
 {% if document and tenant %}
-  {% asyncEach template in ["pages/document.nunj"] %}
+  {% asyncEach template in ["pages/document.njk"] %}
     {% include template  %}
   {% endeach %}
 {% else %}
-  {% include "pages/404.nunj" %}
+  {% include "pages/404.njk" %}
 {% endif %}

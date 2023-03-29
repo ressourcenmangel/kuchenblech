@@ -1,4 +1,4 @@
-{% extends "layouts/main.nunj" %}
+{% extends "layouts/main.njk" %}
 
 {% block content %}
   <h1>{{ ('Not found' if error.status == '404' else error.name) | default('An error has occurred') }}</h1>

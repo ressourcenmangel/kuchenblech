@@ -47,7 +47,7 @@ module.exports = function KuchenblechTheme(options) {
   const theme = new Theme(path.join(__dirname, '..', 'views'), config);
 
   // Set error page
-  theme.setErrorView('_error.nunj');
+  theme.setErrorView('_error.njk');
 
   // Add static files
   theme.addStatic(path.join(__dirname, '..' , 'dist'), `/${config.static.mount}`);
@@ -58,31 +58,31 @@ module.exports = function KuchenblechTheme(options) {
   // Index route
   theme.addRoute('/', {
     handle: 'index',
-    view: 'routes/document.nunj',
+    view: 'routes/document.njk',
   });
 
   // Index tenant route
   theme.addRoute('/:tenant', {
     handle: 'tenant',
-    view: 'routes/document.nunj',
+    view: 'routes/document.njk',
   }, resolvers.tenants);
 
   // Component single
   theme.addRoute('/:tenant?/components/:component', {
     handle: 'component',
-    view: 'routes/component.nunj',
+    view: 'routes/component.njk',
   }, resolvers.components);
 
   // Component preview
   theme.addRoute('/:tenant?/components/:component/preview/:preview?', {
     handle: 'preview',
-    view: 'routes/preview.nunj',
+    view: 'routes/preview.njk',
   }, resolvers.previews);
 
   // Document single
   theme.addRoute('/:tenant?/docs/:document+', {
     handle: 'document',
-    view: 'routes/document.nunj',
+    view: 'routes/document.njk',
   }, resolvers.documents);
 
   // Add filters

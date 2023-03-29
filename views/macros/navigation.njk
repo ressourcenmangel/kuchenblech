@@ -1,4 +1,4 @@
-{% import "macros/status.nunj" as status %}
+{% import "macros/status.njk" as status %}
 
 {% macro leave(component, item, tenants, tenant, request) %}
   {% set isCurrent = true if (component and (component.id == item.id)) else false %}
