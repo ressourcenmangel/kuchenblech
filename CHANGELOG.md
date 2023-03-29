@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.13.0 - 2023.03.29
+
+* Set .nvmrc to lts/dubnium
+* Change nunjucks file extension to .njk
+* Add underline to active sidbar-nav item
+
 ## 0.12.1 - 2023.03.28
 
 * Add active class to nav-item dynamically
