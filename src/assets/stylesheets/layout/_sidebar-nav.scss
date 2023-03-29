@@ -83,8 +83,9 @@
 }
 
 .sidebar-nav__link-text {
-  .sidebar-nav__link:hover &,
-  .sidebar-nav__link:focus & {
+  .sidebar-nav__link:not([aria-expanded]):hover &,
+  .sidebar-nav__link:not([aria-expanded]):focus &,
+  .sidebar-nav__list-item--current &:not([aria-expanded]) {
     text-decoration: underline;
   }
 }
